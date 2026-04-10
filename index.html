@@ -274,27 +274,79 @@ const modules = [
 
 const plans = [
 {
-  name:"Prueba Gratis",
-  price:"$0",
-  period:"/ 14 días",
-  color:"#64ffda",
-  textColor:"#0a0a1a",
-  highlight:true,
-  badge:"14 dias gratis",
-desc:"Accede a una prueba gratuita de 14 días y empezá a automatizar tu negocio desde hoy.",
-cta:"Probar gratis ahora"
-  modules:[
+  name: "Prueba Gratis",
+  price: "$0",
+  period: "/ 14 días",
+  color: "#64ffda",
+  textColor: "#0a0a1a",
+  highlight: true,
+  badge: "14 dias gratis",
+  desc: "Accede a una prueba gratuita de 14 días y empezá a automatizar tu negocio desde hoy.",
+  modules: [
     "Turnos Inteligentes",
     "Automatización básica",
     "Dashboard simple"
   ],
-  limits:[
+  limits: [
     "Hasta 50 turnos",
     "1 flujo automatizado",
     "Soporte básico"
   ],
-  cta:”Probar gratis ahora”
-}, 
+  cta: "Probar gratis ahora"
+},
+{ 
+  name:"Starter", 
+  price:"$89", 
+  period:"/ mes", 
+  color:"#64ffda", 
+  textColor:"#0a0a1a", 
+  highlight:false, 
+  badge:null, 
+  desc:"Para comercios que quieren digitalizarse rápido.", 
+  modules:["Turnos Inteligentes","Ecommerce Automatizado","Dashboard básico"], 
+  limits:["Hasta 500 turnos/mes","1 tienda online","Soporte por email"], 
+  cta:"Empezar gratis 14 días" 
+},
+{ 
+  name:"Growth", 
+  price:"$199", 
+  period:"/ mes", 
+  color:"#ff6b35", 
+  textColor:"#fff", 
+  highlight:true, 
+  badge:"MÁS POPULAR", 
+  desc:"Para PYMEs que quieren crecer con IA.", 
+  modules:["Todo Starter","Marketing con IA","Bots de Voz","Automatización de Procesos"], 
+  limits:["Turnos ilimitados","3 tiendas online","Soporte prioritario + onboarding"], 
+  cta:"Empezar gratis 14 días" 
+},
+{ 
+  name:"Pro", 
+  price:"$399", 
+  period:"/ mes", 
+  color:"#c084fc", 
+  textColor:"#fff", 
+  highlight:false, 
+  badge:null, 
+  desc:"Para empresas medianas con múltiples sucursales.", 
+  modules:["Todo Growth","Multi-sucursal","Meta ADS avanzado","API access"], 
+  limits:["Sucursales ilimitadas","Account manager dedicado","SLA 99.9%"], 
+  cta:"Hablar con ventas" 
+},
+{ 
+  name:"Enterprise", 
+  price:"A medida", 
+  period:"", 
+  color:"#ffd700", 
+  textColor:"#0a0a1a", 
+  highlight:false, 
+  badge:null, 
+  desc:"Implementación personalizada con integración a sistemas existentes.", 
+  modules:["Todo Pro","Implementación custom","Integraciones ERP/CRM","Capacitación del equipo"], 
+  limits:["Contrato anual","Soporte 24/7","Auditoría trimestral"], 
+  cta:"Contactar equipo" 
+},
+];
  { name:"Starter", price:"$89", period:"/ mes", color:"#64ffda", textColor:"#0a0a1a", highlight:false, badge:null, desc:"Para comercios que quieren digitalizarse rápido.", modules:["Turnos Inteligentes","Ecommerce Automatizado","Dashboard básico"], limits:["Hasta 500 turnos/mes","1 tienda online","Soporte por email"], cta:"Empezar gratis 14 días" },
   { name:"Growth", price:"$199", period:"/ mes", color:"#ff6b35", textColor:"#fff", highlight:true, badge:"MÁS POPULAR", desc:"Para PYMEs que quieren crecer con IA.", modules:["Todo Starter","Marketing con IA","Bots de Voz","Automatización de Procesos"], limits:["Turnos ilimitados","3 tiendas online","Soporte prioritario + onboarding"], cta:"Empezar gratis 14 días" },
   { name:"Pro", price:"$399", period:"/ mes", color:"#c084fc", textColor:"#fff", highlight:false, badge:null, desc:"Para empresas medianas con múltiples sucursales.", modules:["Todo Growth","Multi-sucursal","Meta ADS avanzado","API access"], limits:["Sucursales ilimitadas","Account manager dedicado","SLA 99.9%"], cta:"Hablar con ventas" },
@@ -362,7 +414,6 @@ plans.forEach(p => {
   <button class="plan-cta" style="background:${p.highlight?p.color:'transparent'};color:${p.highlight?p.textColor:p.color};border:1.5px solid ${p.color}">
     ${p.cta}
   </button>
-</a>
 </a>
   `;
   pgrid.appendChild(card);
