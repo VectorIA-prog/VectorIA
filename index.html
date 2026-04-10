@@ -232,14 +232,13 @@
 <body>
 
 <div class="hero">
-  <div class="badge">Estrategia de Negocio · Híbrido SaaS + Soporte</div>
-  <h1>Tu Plataforma de<br>Automatización con IA</h1>
-  <p class="subtitle">PYMEs y empresas medianas de cualquier industria. Modelo híbrido: plataforma potente + soporte humano que garantiza adopción.</p>
+  <div class="badge">VectorIA</div>
+  <h1>Automatiza tu empresa<br>con IA</h1>
+  <p class="subtitle">PYMEs y grandes empresas de cualquier industria que buscan automatizar tareas, optimizar procesos y aumentar las ventas. Nos enfocamos en eliminar trabajos repetitivos y mejorar la eficiencia, permitiendo que las empresas funcionen de manera mas rápida y organizadas.</p>
 
   <div class="tabs-wrap">
     <button class="tab-btn active" onclick="switchTab('modulos', this)">Módulos</button>
     <button class="tab-btn" onclick="switchTab('planes', this)">Planes & Precios</button>
-    <button class="tab-btn" onclick="switchTab('freemium', this)">Estrategia Freemium</button>
   </div>
 </div>
 
@@ -261,22 +260,6 @@
     </div>
   </div>
 
-  <!-- FREEMIUM -->
-  <div id="tab-freemium" class="section">
-    <div class="principle-box">
-      <h3>El principio central</h3>
-      <p>El cliente tiene que <strong style="color:#fff">sentir el valor antes de pagar</strong>. No lo convencés con un PDF de features — lo convencés dejándolo usar la plataforma con sus propios datos. Cada estrategia abajo apunta a ese momento "a-ha".</p>
-    </div>
-    <div class="free-list" id="free-list"></div>
-    <div style="margin-top:40px;">
-      <div class="section-box">
-        <h3>Funnel de conversión recomendado</h3>
-        <div class="funnel-steps" id="funnel-steps"></div>
-      </div>
-    </div>
-  </div>
-
-</div>
 
 <script>
 const modules = [
@@ -289,7 +272,28 @@ const modules = [
 ];
 
 const plans = [
-  { name:"Starter", price:"$89", period:"/ mes", color:"#64ffda", textColor:"#0a0a1a", highlight:false, badge:null, desc:"Para comercios que quieren digitalizarse rápido.", modules:["Turnos Inteligentes","Ecommerce Automatizado","Dashboard básico"], limits:["Hasta 500 turnos/mes","1 tienda online","Soporte por email"], cta:"Empezar gratis 14 días" },
+{
+  name:"Prueba Gratis",
+  price:"$0",
+  period:"/ 14 días",
+  color:"#64ffda",
+  textColor:"#0a0a1a",
+  highlight:true,
+  badge:”14 dias gratis”,
+  desc:”Accede a una prueba gratuita de 14 días y empezó a automatizar tu negocio desde hoy.”,
+  modules:[
+    "Turnos Inteligentes",
+    "Automatización básica",
+    "Dashboard simple"
+  ],
+  limits:[
+    "Hasta 50 turnos",
+    "1 flujo automatizado",
+    "Soporte básico"
+  ],
+  cta:”Probar gratis ahora”
+}, 
+ { name:"Starter", price:"$89", period:"/ mes", color:"#64ffda", textColor:"#0a0a1a", highlight:false, badge:null, desc:"Para comercios que quieren digitalizarse rápido.", modules:["Turnos Inteligentes","Ecommerce Automatizado","Dashboard básico"], limits:["Hasta 500 turnos/mes","1 tienda online","Soporte por email"], cta:"Empezar gratis 14 días" },
   { name:"Growth", price:"$199", period:"/ mes", color:"#ff6b35", textColor:"#fff", highlight:true, badge:"MÁS POPULAR", desc:"Para PYMEs que quieren crecer con IA.", modules:["Todo Starter","Marketing con IA","Bots de Voz","Automatización de Procesos"], limits:["Turnos ilimitados","3 tiendas online","Soporte prioritario + onboarding"], cta:"Empezar gratis 14 días" },
   { name:"Pro", price:"$399", period:"/ mes", color:"#c084fc", textColor:"#fff", highlight:false, badge:null, desc:"Para empresas medianas con múltiples sucursales.", modules:["Todo Growth","Multi-sucursal","Meta ADS avanzado","API access"], limits:["Sucursales ilimitadas","Account manager dedicado","SLA 99.9%"], cta:"Hablar con ventas" },
   { name:"Enterprise", price:"A medida", period:"", color:"#ffd700", textColor:"#0a0a1a", highlight:false, badge:null, desc:"Implementación personalizada con integración a sistemas existentes.", modules:["Todo Pro","Implementación custom","Integraciones ERP/CRM","Capacitación del equipo"], limits:["Contrato anual","Soporte 24/7","Auditoría trimestral"], cta:"Contactar equipo" },
@@ -352,7 +356,11 @@ plans.forEach(p => {
     <div class="plan-desc">${p.desc}</div>
     <div class="plan-modules">${p.modules.map(m=>`<div class="plan-module-item"><span style="color:${p.color};font-size:10px">✦</span>${m}</div>`).join('')}</div>
     <div class="plan-limits">${p.limits.map(l=>`<div class="plan-limit">• ${l}</div>`).join('')}</div>
-    <button class="plan-cta" style="background:${p.highlight?p.color:'transparent'};color:${p.highlight?p.textColor:p.color};border:1.5px solid ${p.color}">${p.cta}</button>
+    <a href="<a href="mailto:tuemail@gmail.com?subject=Prueba%20Gratis%20VectorIA&body=Hola,%20quiero%20acceder%20a%20la%20prueba%20gratuita%20de%2014%20días.%20Mi%20empresa%20es:%20" target="_blank">
+  <button class="plan-cta" style="background:${p.highlight?p.color:'transparent'};color:${p.highlight?p.textColor:p.color};border:1.5px solid ${p.color}">
+    ${p.cta}
+  </button>
+</a>
   `;
   pgrid.appendChild(card);
 });
@@ -409,5 +417,3 @@ function switchTab(id, btn) {
   btn.classList.add('active');
 }
 </script>
-</body>
-</html>
