@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casos en detalle — VectorIA</title>
+<meta name="description" content="Qué construimos para Máquinas Patagónicas, Calma Natural y SUMO App: apps a medida, bots de WhatsApp, paneles de administración y automatización.">
+<meta property="og:title" content="Casos en detalle — VectorIA">
+<meta property="og:description" content="Apps propias, bots de WhatsApp, paneles de administración y rastreo de flota. Lo que construimos, pieza por pieza.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.vectoria.ar/casos.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Space+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#02040A; --bg2:#050914; --panel:rgba(255,255,255,.025); --line:rgba(255,255,255,.09);
+    --text:#E8F0FF; --text2:#DDE6FA; --muted:#A2AFCF; --dim:#7E8BAF;
+    --ac:#F97316; --ac2:#FBBF24; --acg:rgba(249,115,22,.12);
+    --green:#4ADE80; --cyan:#22D3EE; --violet:#A78BFA;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit}
+  .mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+  .grad{background:linear-gradient(90deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  h1,h2,h3{font-family:'Chakra Petch',sans-serif;font-weight:700;line-height:1.05;text-wrap:balance}
+
+  /* ambient */
+  .glow{position:fixed;inset:0;z-index:0;pointer-events:none;background:
+    radial-gradient(700px 400px at 12% -10%,rgba(249,115,22,.14),transparent 60%),
+    radial-gradient(600px 400px at 95% 20%,rgba(167,139,250,.08),transparent 60%)}
+  .grid{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.35;
+    background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+    background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 0%,#000 20%,transparent 75%)}
+
+  /* nav */
+  nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 4vw;
+    background:rgba(2,5,12,.62);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07)}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;letter-spacing:.02em}
+  .navlinks{display:flex;align-items:center;gap:26px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em}
+  .navlinks a{color:var(--muted);text-decoration:none;transition:color .2s}
+  .navlinks a:hover{color:var(--ac)}
+  .btn{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;font-weight:600;text-decoration:none;padding:11px 18px;border-radius:9px;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .2s,border-color .2s}
+  .btn-ac{color:#03060D;background:linear-gradient(90deg,var(--ac),var(--ac2));box-shadow:0 0 22px rgba(249,115,22,.3)}
+  .btn-ac:hover{transform:translateY(-1px);box-shadow:0 0 34px rgba(249,115,22,.45)}
+  .btn-ghost{color:var(--text);border:1px solid var(--line);background:rgba(255,255,255,.03)}
+  .btn-ghost:hover{border-color:rgba(255,255,255,.3)}
+  @media(max-width:760px){.navlinks{display:none}}
+
+  main{position:relative;z-index:1}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 5vw}
+
+  /* hero */
+  .hero{padding:132px 0 48px}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;color:var(--ac);margin-bottom:14px}
+  .hero h1{font-size:clamp(32px,5.4vw,60px);margin-bottom:18px;max-width:14ch}
+  .hero p{font-size:clamp(15px,1.6vw,18px);line-height:1.6;color:var(--muted);max-width:60ch}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .chip{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--muted);text-decoration:none;padding:9px 14px;border:1px solid var(--line);border-radius:100px;background:var(--panel);transition:color .2s,border-color .2s;display:inline-flex;align-items:center;gap:8px}
+  .chip:hover{color:var(--text);border-color:rgba(249,115,22,.5)}
+  .chip i{width:7px;height:7px;border-radius:50%;background:var(--ac);display:inline-block}
+
+  /* case */
+  .case{padding:56px 0;border-top:1px solid var(--line);scroll-margin-top:80px}
+  .case-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+  .client{display:flex;align-items:center;gap:16px}
+  .client img,.client .mark{width:60px;height:60px;border-radius:15px;object-fit:cover;display:block;border:1px solid rgba(249,115,22,.35);flex-shrink:0}
+  .client .mark{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(249,115,22,.16),rgba(255,255,255,.04));font-family:'Chakra Petch',sans-serif;font-size:18px;color:var(--ac)}
+  .client h2{font-size:clamp(24px,3.2vw,36px)}
+  .client .sub{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;color:var(--dim);margin-top:6px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;padding:5px 11px;border-radius:100px;border:1px solid var(--line);color:var(--muted);background:var(--panel)}
+  .tag.ac{border-color:rgba(249,115,22,.4);color:var(--ac);background:var(--acg)}
+
+  .cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:18px}
+  @media(max-width:820px){.cols{grid-template-columns:1fr}}
+  .box{border:1px solid var(--line);border-radius:18px;background:var(--panel);backdrop-filter:blur(12px);padding:22px;position:relative}
+  .box.lead{background:linear-gradient(135deg,var(--acg),rgba(255,255,255,.02) 45%)}
+  .box.lead::before{content:"";position:absolute;top:0;left:30px;width:70px;height:2px;background:linear-gradient(90deg,var(--ac),transparent)}
+  .box h3{font-size:12px;font-family:'IBM Plex Mono',monospace;font-weight:500;letter-spacing:.22em;color:var(--dim);margin-bottom:14px}
+  .box p{font-size:15px;line-height:1.65;color:var(--text2)}
+  .modules{display:grid;gap:10px}
+  .mod{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:14px;border:1px solid rgba(255,255,255,.07);border-radius:13px;background:rgba(2,4,10,.5)}
+  .mod .ic{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(249,115,22,.3);background:var(--acg);color:var(--ac)}
+  .mod .ic svg{width:17px;height:17px}
+  .mod b{display:block;font-family:'Chakra Petch',sans-serif;font-weight:600;font-size:15px;margin-bottom:5px}
+  .mod ul{list-style:none;display:flex;flex-direction:column;gap:4px}
+  .mod li{font-size:13.5px;line-height:1.5;color:var(--muted);padding-left:14px;position:relative}
+  .mod li::before{content:"▸";position:absolute;left:0;color:var(--ac);font-size:11px;top:2px}
+  .quote{margin-top:18px;border-left:2px solid var(--ac);padding:4px 0 4px 18px}
+  .quote p{font-size:14.5px;line-height:1.6;color:var(--text2)}
+  .quote span{display:block;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;color:var(--dim)}
+  .case-foot{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+
+  /* facts strip */
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:18px}
+  .fact{border:1px solid var(--line);border-radius:13px;padding:14px 16px;background:var(--panel)}
+  .fact b{display:block;font-family:'Chakra Petch',sans-serif;font-size:17px;font-weight:600;margin-bottom:3px}
+  .fact span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;color:var(--dim)}
+
+  /* also */
+  .also{padding:64px 0;border-top:1px solid var(--line)}
+  .also h2{font-size:clamp(24px,3.2vw,36px);margin-bottom:10px}
+  .also > .wrap > p{color:var(--muted);line-height:1.6;max-width:60ch;margin-bottom:26px}
+  .also-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+  .also .box b{display:block;font-family:'Chakra Petch',sans-serif;font-size:17px;font-weight:600;margin-bottom:8px}
+  .also .box p{font-size:14px;color:var(--muted)}
+  .also .box .st{position:absolute;top:16px;right:16px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.16em;padding:4px 9px;border-radius:100px;border:1px solid rgba(34,211,238,.4);color:var(--cyan);background:rgba(34,211,238,.08)}
+
+  /* cta */
+  .cta{padding:72px 0 80px;border-top:1px solid var(--line)}
+  .cta .box{padding:36px;text-align:center;background:linear-gradient(135deg,var(--acg),rgba(255,255,255,.02) 55%)}
+  .cta h2{font-size:clamp(26px,3.6vw,42px);margin-bottom:12px}
+  .cta p{color:var(--muted);line-height:1.6;max-width:52ch;margin:0 auto 24px}
+  .cta .row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+  footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:26px 5vw;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;color:var(--dim)}
+  footer a{color:var(--muted);text-decoration:none}
+  footer a:hover{color:var(--ac)}
+
+  .js .rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .js .rv.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}}
+  a:focus-visible,.btn:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+</style>
+</head>
+<body>
+<div class="glow"></div><div class="grid"></div>
+
+<nav>
+  <a class="logo" href="index.html">
+    <svg width="26" height="26" viewBox="0 0 32 32" fill="none"><defs><linearGradient id="vlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F97316"/><stop offset="1" stop-color="#FBBF24"/></linearGradient></defs><path d="M4 6 L16 27 L28 6" stroke="url(#vlg)" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="27" r="2.4" fill="#FFFFFF"/></svg>
+    <span>Vector<span class="grad">IA</span></span>
+  </a>
+  <div class="navlinks">
+    <a href="index.html">← INICIO</a>
+    <a href="index.html#modulos">MÓDULOS</a>
+    <a href="index.html#planes">PLANES</a>
+    <a href="index.html#desafio">DESAFÍO</a>
+  </div>
+  <a class="btn btn-ac" href="https://wa.me/5492994156149?text=Hola%21%20Vi%20los%20casos%20de%20VectorIA%20y%20quiero%20hablar%20de%20mi%20empresa" target="_blank" rel="noopener">HABLEMOS</a>
+</nav>
+
+<main>
+  <section class="hero wrap">
+    <div class="eyebrow">[ CASOS EN DETALLE ]</div>
+    <h1>Lo que construimos, <span class="grad">pieza por pieza.</span></h1>
+    <p>En el inicio te mostramos lo que dicen los clientes. Acá te mostramos lo que hay detrás: qué problema tenía cada empresa, qué se desarrolló y con qué módulos quedó operando.</p>
+    <div class="chips">
+      <a class="chip" href="#maquinas-patagonicas"><i></i>MÁQUINAS PATAGÓNICAS</a>
+      <a class="chip" href="#calma-natural"><i></i>CALMA NATURAL</a>
+      <a class="chip" href="#sumo"><i></i>SUMO APP</a>
+      <a class="chip" href="#tambien"><i style="background:var(--cyan)"></i>TAMBIÉN HACEMOS</a>
+    </div>
+  </section>
+
+  <!-- CASO 1 -->
+  <section class="case wrap rv" id="maquinas-patagonicas">
+    <div class="case-head">
+      <div class="client">
+        <img src="data:image/jpeg;base64,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" alt="Máquinas Patagónicas">
+        <div>
+          <h2>Máquinas Patagónicas S.R.L.</h2>
+          <div class="sub">ALQUILER DE MÁQUINAS VIALES · VENTA DE HORMIGÓN · NEUQUÉN</div>
+        </div>
+      </div>
+      <div class="tags"><span class="tag ac">ENTERPRISE A MEDIDA</span><span class="tag">PWA</span><span class="tag">FLOTA</span><span class="tag">PANEL ADMIN</span><span class="tag">SITIO WEB</span></div>
+    </div>
+
+    <div class="facts">
+      <div class="fact"><b>App propia</b><span>PWA · DESDE EL CELULAR</span></div>
+      <div class="fact"><b>Rastreo satelital</b><span>CADA VEHÍCULO</span></div>
+      <div class="fact"><b>Reportes</b><span>SEMANALES Y MENSUALES</span></div>
+      <div class="fact"><b>Panel admin</b><span>TAREAS · MANTENIMIENTO · PRECIOS</span></div>
+    </div>
+
+    <div class="cols">
+      <div class="box lead">
+        <h3>EL PROBLEMA</h3>
+        <p>Una empresa con equipos pesados, choferes y obras en distintos puntos, gestionando a mano quién trabajó, qué máquina se usó, cuánto combustible se cargó y qué gastos hubo. Sin un lugar central donde ver la operación completa ni saber dónde estaba cada vehículo.</p>
+        <div class="quote">
+          <p>"Nos desarrollaron una solución 100% a medida: aplicación propia para control de empleados y gestión de flota con rastreo satelital, automatizaciones por WhatsApp y una PWA que el equipo usa desde el celular."</p>
+          <span>MÁQUINAS PATAGÓNICAS · INDUSTRIA · NEUQUÉN</span>
+        </div>
+      </div>
+      <div class="box">
+        <h3>LO QUE SE CONSTRUYÓ</h3>
+        <div class="modules">
+          <div class="mod"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2.5"/><path d="M11 18h2"/></svg></div><div><b>PWA de administración de empleados</b><ul><li>Fichado de entrada y salida desde el teléfono</li><li>Carga de gastos con seguimiento</li><li>Registro de uso de equipos y consumo de combustible</li></ul></div></div>
+          <div class="mod"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><b>Rastreo satelital de flota</b><ul><li>Cada vehículo con su seguimiento configurado</li><li>Reportes automáticos semanales y mensuales</li></ul></div></div>
+          <div class="mod"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 10h18M9 4v16"/></svg></div><div><b>Panel de administración</b><ul><li>Asignación de tareas de la semana a cada empleado</li><li>Propuesta de mantenimientos por equipo</li><li>Ajuste de precios centralizado</li></ul></div></div>
+          <div class="mod"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div><div><b>Sitio web público</b><ul><li>Presencia comercial de la empresa, con formulario de contacto</li></ul></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="case-foot">
+      <a class="btn btn-ghost" href="maqpat.html" target="_blank" rel="noopener">VER EL SITIO WEB ↗</a>
+    </div>
+  </section>
+
+  <!-- CASO 2 -->
+  <section class="case wrap rv" id="calma-natural">
+    <div class="case-head">
+      <div class="client">
+        <span class="mark">CN</span>
+        <div>
+          <h2>Calma Natural</h2>
+          <div class="sub">CENTRO DE MASAJES PREMIUM · TURNOS Y VOUCHERS</div>
+        </div>
+      </div>
+      <div class="tags"><span class="tag ac">TURNOS INTELIGENTES</span><span class="tag">BOT WHATSAPP</span><span class="tag">PANEL MULTIUSUARIO</span><span class="tag">VOUCHERS</span></div>
+    </div>
+
+    <div class="facts">
+      <div class="fact"><b>Bot de WhatsApp</b><span>TURNOS 24/7</span></div>
+      <div class="fact"><b>Vouchers</b><span>CÓDIGOS ÚNICOS EN BASE DE DATOS</span></div>
+      <div class="fact"><b>Ficha de paciente</b><span>CONTACTO · RECORDATORIOS · TURNOS FIJOS</span></div>
+      <div class="fact"><b>Multiusuario</b><span>TODO EL EQUIPO EN EL MISMO PANEL</span></div>
+    </div>
+
+    <div class="cols">
+      <div class="box lead">
+        <h3>EL PROBLEMA</h3>
+        <p>Un centro de masajes que gestionaba los turnos a mano por WhatsApp, vendía vouchers de regalo sin un sistema que los controle, y no tenía una ficha centralizada de cada paciente. Con varias personas atendiendo, la información quedaba repartida en distintos teléfonos.</p>
+      </div>
+      <div class="box">
+        <h3>LO QUE SE CONSTRUYÓ</h3>
+        <div class="modules">
+          <div class="mod"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-5.4A8 8 0 1 1 21 12z"/></svg></div><div><b>Bot de WhatsApp para turnos</b><ul><li>El paciente saca el turno conversando, sin que nadie del equipo intervenga</li><li>Recordatorios automáticos</li></ul></div></div>
+          <div class="mod"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M3 12h18M8 6v12"/></svg></div><div><b>Vouchers automáticos</b><ul><li>Compra y venta de vouchers con código único cargado en la base de datos</li><li>Validación al momento de usarlo, sin duplicados</li></ul></div></div>
+          <div class="mod"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="8" r="3.5"/><path d="M21 21v-2a4 4 0 0 0-3-3.9M16 4.2a3.5 3.5 0 0 1 0 6.8"/></svg></div><div><b>Panel web multiusuario</b><ul><li>Mensajes manuales cuando el bot deriva a una persona</li><li>Ficha de cada paciente: número, recordatorios, turnos fijos</li><li>Varias personas usando el panel a la vez, con comunicación interna</li></ul></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASO 3 -->
+  <section class="case wrap rv" id="sumo">
+    <div class="case-head">
+      <div class="client">
+        <img src="data:image/jpeg;base64,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" alt="Sumo App">
+        <div>
+          <h2>SUMO App</h2>
+          <div class="sub">APP DE CHANGAS Y SERVICIOS · CABA · CÓRDOBA · NEUQUÉN</div>
+        </div>
+      </div>
+      <div class="tags"><span class="tag ac">APP EN PRODUCCIÓN</span><span class="tag">DISEÑO</span><span class="tag">SEGURIDAD</span><span class="tag">INTERFAZ</span></div>
+    </div>
+
+    <div class="facts">
+      <div class="fact"><b>En producción</b><span>CON USUARIOS REALES</span></div>
+      <div class="fact"><b>Multi-ciudad</b><span>CABA · CÓRDOBA · NEUQUÉN Y MÁS</span></div>
+      <div class="fact"><b>Diseño + código</b><span>PRODUCTO E IMPLEMENTACIÓN</span></div>
+      <div class="fact"><b>Seguridad</b><span>HARDENING DE LA APP</span></div>
+    </div>
+
+    <div class="cols">
+      <div class="box lead">
+        <h3>EL DESAFÍO</h3>
+        <p>Una app de changas y servicios del hogar que ya estaba funcionando con usuarios en varias ciudades argentinas. El trabajo no era arrancar de cero: era mejorar diseño, código, seguridad e interfaz sobre un producto vivo, sin frenar la operación.</p>
+        <div class="quote">
+          <p>"Excelente desde el día uno. Aportaron soluciones técnicas y automatizaciones que hicieron avanzar el proyecto más rápido y más sólido. Transforman ideas en funcionalidades reales."</p>
+          <span>SUMO APP · APP DE CHANGAS · CABA</span>
+        </div>
+      </div>
+      <div class="box">
+        <h3>EN QUÉ TRABAJAMOS</h3>
+        <div class="modules">
+          <div class="mod"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div><div><b>Seguridad</b><ul><li>Revisión y refuerzo de la seguridad de una app ya en producción</li></ul></div></div>
+          <div class="mod"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg></div><div><b>Diseño e interfaz</b><ul><li>Diseño de producto y mejoras de interfaz para usuarios y prestadores</li></ul></div></div>
+          <div class="mod"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></div><div><b>Desarrollo</b><ul><li>Soluciones técnicas y automatizaciones que aceleraron el avance del proyecto</li></ul></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAMBIÉN -->
+  <section class="also" id="tambien">
+    <div class="wrap">
+      <div class="eyebrow">[ TAMBIÉN HACEMOS ]</div>
+      <h2>Lo que armamos <span class="grad">bajo pedido.</span></h2>
+      <p>Además de los casos de arriba, trabajamos estos frentes para empresas que necesitan algo puntual.</p>
+      <div class="also-grid">
+        <div class="box"><span class="st">A MEDIDA</span><b>Sistemas de gestión integrados con Tango</b><p>Desarrollos que se conectan con Tango Gestión, el software administrativo más usado en Argentina, para que tu operación y tu contabilidad hablen el mismo idioma.</p></div>
+        <div class="box"><span class="st">IA + n8n</span><b>Automatización de procesos</b><p>Flujos que conectan tus herramientas y eliminan las tareas repetitivas: carga de datos, reportes, notificaciones internas, seguimiento de clientes.</p></div>
+        <div class="box"><span class="st">WEB</span><b>Landing pages y sitios comerciales</b><p>Páginas simples, rápidas y pensadas para que el que llega desde Instagram o Google te escriba. Varias ya publicadas para negocios de la región.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <div class="box rv">
+        <div class="eyebrow">[ TU EMPRESA ]</div>
+        <h2>¿Cuál sería <span class="grad">tu caso?</span></h2>
+        <p>Contanos qué parte de tu operación todavía se maneja a mano y te decimos por dónde empezar. Sin compromiso.</p>
+        <div class="row">
+          <a class="btn btn-ac" href="https://wa.me/5492994156149?text=Hola%21%20Vi%20los%20casos%20de%20VectorIA%20y%20quiero%20hablar%20de%20mi%20empresa" target="_blank" rel="noopener">HABLAR POR WHATSAPP</a>
+          <a class="btn btn-ghost" href="index.html#planes">VER PLANES</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 VECTORIA · HECHO EN ARGENTINA</span>
+  <span><a href="index.html">INICIO</a> &nbsp;·&nbsp; <a href="https://instagram.com/vectoria.arg" target="_blank" rel="noopener">@VECTORIA.ARG</a> &nbsp;·&nbsp; <a href="mailto:ventas.vectoria@gmail.com">EMAIL</a></span>
+</footer>
+
+<script>
+  (function(){
+    document.documentElement.classList.add('js');
+    var els=document.querySelectorAll('.rv');
+    // safety: never leave content hidden
+    setTimeout(function(){els.forEach(function(e){e.classList.add('in')})},1500);
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{threshold:.08});
+    els.forEach(function(e){io.observe(e)});
+    // anything already in view on load shows immediately
+    els.forEach(function(e){var r=e.getBoundingClientRect();if(r.top<window.innerHeight)e.classList.add('in');});
+  })();
+</script>
+</body>
+</html>
