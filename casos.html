@@ -108,7 +108,7 @@
   .also-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
   .also .box b{display:block;font-family:'Chakra Petch',sans-serif;font-size:17px;font-weight:600;margin-bottom:8px}
   .also .box p{font-size:14px;color:var(--muted)}
-  .also .box .st{position:absolute;top:16px;right:16px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.16em;padding:4px 9px;border-radius:100px;border:1px solid rgba(34,211,238,.4);color:var(--cyan);background:rgba(34,211,238,.08)}
+  .also .box .st{display:inline-block;width:fit-content;margin-bottom:12px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.16em;padding:4px 9px;border-radius:100px;border:1px solid rgba(34,211,238,.4);color:var(--cyan);background:rgba(34,211,238,.08)}
 
   /* cta */
   .cta{padding:72px 0 80px;border-top:1px solid var(--line)}
@@ -197,7 +197,7 @@
       </div>
     </div>
     <div class="case-foot">
-      <a class="btn btn-ghost" href="maqpat.html" target="_blank" rel="noopener">VER EL SITIO WEB ↗</a>
+      <a class="btn btn-ghost" href="https://maquinaspatagonicas.com.ar" target="_blank" rel="noopener">VER EL SITIO WEB ↗</a>
     </div>
   </section>
 
@@ -205,7 +205,7 @@
   <section class="case wrap rv" id="calma-natural">
     <div class="case-head">
       <div class="client">
-        <span class="mark">CN</span>
+        <img src="data:image/jpeg;base64,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" alt="Calma Natural">
         <div>
           <h2>Calma Natural</h2>
           <div class="sub">CENTRO DE MASAJES PREMIUM · TURNOS Y VOUCHERS</div>
@@ -247,7 +247,7 @@
           <div class="sub">APP DE CHANGAS Y SERVICIOS · CABA · CÓRDOBA · NEUQUÉN</div>
         </div>
       </div>
-      <div class="tags"><span class="tag ac">APP EN PRODUCCIÓN</span><span class="tag">DISEÑO</span><span class="tag">SEGURIDAD</span><span class="tag">INTERFAZ</span></div>
+      <div class="tags"><span class="tag ac">APP EN PRODUCCIÓN</span><span class="tag">SITIO WEB</span><span class="tag">DISEÑO</span><span class="tag">SEGURIDAD</span><span class="tag">INTERFAZ</span></div>
     </div>
 
     <div class="facts">
@@ -272,8 +272,12 @@
           <div class="mod"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div><div><b>Seguridad</b><ul><li>Revisión y refuerzo de la seguridad de una app ya en producción</li></ul></div></div>
           <div class="mod"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg></div><div><b>Diseño e interfaz</b><ul><li>Diseño de producto y mejoras de interfaz para usuarios y prestadores</li></ul></div></div>
           <div class="mod"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></div><div><b>Desarrollo</b><ul><li>Soluciones técnicas y automatizaciones que aceleraron el avance del proyecto</li></ul></div></div>
+          <div class="mod"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div><div><b>Sitio web</b><ul><li>Sitio público de la app, sumochangas.com, desarrollado por nosotros</li></ul></div></div>
         </div>
       </div>
+    </div>
+    <div class="case-foot">
+      <a class="btn btn-ghost" href="https://www.sumochangas.com/" target="_blank" rel="noopener">VER EL SITIO WEB ↗</a>
     </div>
   </section>
 
