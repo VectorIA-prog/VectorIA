@@ -95,7 +95,8 @@
 
   /* SERVICES */
   .grid{display:grid;gap:16px}
-  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:760px){.g2{grid-template-columns:1fr}}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:28px;transition:border-color .2s}
   .card:hover{border-color:var(--line2)}
   .card .ico{width:44px;height:44px;border-radius:10px;background:var(--ac-soft);border:1px solid var(--ac-line);display:grid;place-items:center;margin-bottom:18px}
