@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VectorIA — Variantes del monograma ViA</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0B0F17;--panel:#131A28;--line:rgba(255,255,255,.1);--text:#E8ECF4;--muted:#98A3B8;--purple:#3B0FA3;--purple-l:#8B6CFF;--orange:#F97316}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;padding:40px 24px 80px}
+  h1{font-family:'Space Grotesk';font-size:28px;margin-bottom:6px}
+  .sub{color:var(--muted);margin-bottom:36px;max-width:760px;line-height:1.55}
+  .opt{max-width:1100px;margin:0 auto 30px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel)}
+  .opt header{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:16px 22px;border-bottom:1px solid var(--line)}
+  .opt h2{font-family:'Space Grotesk';font-size:18px;white-space:nowrap}
+  .opt h2 span{font-family:'JetBrains Mono';font-size:12px;color:var(--orange);margin-right:10px;letter-spacing:.12em}
+  .opt p{color:var(--muted);font-size:13.5px;max-width:560px;text-align:right}
+  .row{display:grid;grid-template-columns:1fr 1fr 150px}
+  .cell{display:flex;align-items:center;justify-content:center;padding:44px 24px;min-height:160px}
+  .dark{background:#0B0F17}.light{background:#F5F3EE}.tile{background:#1B2232;flex-direction:column;gap:10px;font-family:'JetBrains Mono';font-size:10px;color:var(--muted);letter-spacing:.1em}
+  .logo{display:inline-flex;align-items:center;gap:14px;font-family:'Space Grotesk';font-weight:700;font-size:40px;letter-spacing:-.03em;color:#E8ECF4}
+  .light .logo{color:#0B0F17}
+  .logo svg{height:40px;width:auto}
+  .fav{width:56px;height:56px}
+  .nav{max-width:1100px;margin:0 auto 30px;border:1px solid var(--line);border-radius:14px;background:rgba(11,15,23,.9);padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between}
+  .nav .logo{font-size:22px;gap:10px}.nav .logo svg{height:24px}
+  .nav .menu{display:flex;gap:26px;font-size:14.5px;color:var(--muted);align-items:center}
+  .nav .btn{padding:9px 16px;border:1px solid rgba(255,255,255,.14);border-radius:10px;color:var(--text);font-weight:600;font-size:14px}
+  .navlabel{max-width:1100px;margin:0 auto 8px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;color:var(--muted)}
+  @media(max-width:760px){.row{grid-template-columns:1fr}.opt p{text-align:left}.opt header{flex-direction:column}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Monograma ViA: V, i, A construidos como polígonos e inclinados 14° -->
+    <g id="via" transform="translate(14,0) skewX(-14)">
+      <polygon style="fill:var(--letters)" class="v" points="0,0 15,0 27,42 39,0 54,0 34,60 20,60"/>
+      <polygon style="fill:var(--acc)" class="i" points="58,17 70,17 70,60 58,60"/>
+      <polygon style="fill:var(--acc)" class="idot" points="58,0 70,0 70,11 58,11"/>
+      <path style="fill:var(--letters)" class="a" fill-rule="evenodd" d="M74,60 L96,0 L110,0 L132,60 L118,60 L114,48 L92,48 L88,60 Z M97,37 L109,37 L103,17 Z"/>
+    </g>
+    <!-- Variante con la "i" rematada en punta de vector -->
+    <g id="via-arrow" transform="translate(14,0) skewX(-14)">
+      <polygon style="fill:var(--letters)" class="v" points="0,0 15,0 27,42 39,0 54,0 34,60 20,60"/>
+      <polygon style="fill:var(--acc)" class="i" points="58,17 70,17 70,60 58,60"/>
+      <polygon style="fill:var(--acc)" class="idot" points="56,12 56,0 68,0 68,3 60,3 60,12"/>
+      <path style="fill:var(--letters)" class="a" fill-rule="evenodd" d="M74,60 L96,0 L110,0 L132,60 L118,60 L114,48 L92,48 L88,60 Z M97,37 L109,37 L103,17 Z"/>
+    </g>
+    <!-- La "i" como vector geométrico: origen (punto) abajo, segmento, extremo (punta) arriba -->
+    <g id="via-vector" transform="translate(14,0) skewX(-14)">
+      <polygon style="fill:var(--letters)" class="v" points="0,0 15,0 27,42 39,0 54,0 34,60 20,60"/>
+      <polygon style="fill:var(--acc)" class="i" points="59,14 69,14 69,50 59,50"/>
+      <circle style="fill:var(--acc)" class="idot" cx="64" cy="54" r="6.5"/>
+      <polygon style="fill:var(--acc)" class="idot" points="64,0 74,16 54,16"/>
+      <path style="fill:var(--letters)" class="a" fill-rule="evenodd" d="M74,60 L96,0 L110,0 L132,60 L118,60 L114,48 L92,48 L88,60 Z M97,37 L109,37 L103,17 Z"/>
+    </g>
+    <!-- Vector geométrico puro: segmento orientado de origen a extremo -->
+    <g id="vec">
+      <circle style="fill:var(--letters)" class="o" cx="9" cy="51" r="7"/>
+      <path style="stroke:var(--acc)" class="s" d="M14 46 L44 16" stroke-width="9" stroke-linecap="round" fill="none"/>
+      <path style="stroke:var(--acc)" class="s" d="M28 10 H50 V32" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </g>
+  </defs>
+</svg>
+
+<h1>Monograma ViA — variantes</h1>
+<p class="sub">Partí de tu propuesta (ViA en violeta + VectorIA en negro) y armé el monograma en vectores para poder jugar con color, peso y detalle. Cada fila: fondo oscuro (la landing), fondo claro (papel, presupuestos, facturas) e ícono para favicon / app / Instagram. Abajo, cómo queda cada versión en la barra de navegación real.</p>
+
+<!-- 1 -->
+<section class="opt">
+  <header><h2><span>1</span>Tal cual tu propuesta</h2><p>ViA en violeta profundo, wordmark en negro (o blanco sobre oscuro). Sobre fondo oscuro el violeta #3B0FA3 pierde contraste, así que en esa versión uso un violeta más claro (#8B6CFF).</p></header>
+  <div class="row">
+    <div class="cell dark"><span class="logo"><svg viewBox="0 0 150 60" style="--letters:#8B6CFF;--acc:#8B6CFF"><use href="#via"/></svg><span>VectorIA</span></span></div>
+    <div class="cell light"><span class="logo"><svg viewBox="0 0 150 60" style="--letters:#3B0FA3;--acc:#3B0FA3"><use href="#via"/></svg><span>VectorIA</span></span></div>
+    <div class="cell tile"><svg class="fav" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#3B0FA3"/><svg x="8" y="17" width="48" height="30" viewBox="0 0 150 60" style="--letters:#fff;--acc:#fff"><use href="#via"/></svg></svg>ÍCONO</div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="opt">
+  <header><h2><span>2</span>Mismo monograma, en naranja</h2><p>Idéntico pero con el naranja que ya usa la landing. Cero cambios en el sitio y el logo conversa con los botones y acentos actuales.</p></header>
+  <div class="row">
+    <div class="cell dark"><span class="logo"><svg viewBox="0 0 150 60" style="--letters:#F97316;--acc:#F97316"><use href="#via"/></svg><span>VectorIA</span></span></div>
+    <div class="cell light"><span class="logo"><svg viewBox="0 0 150 60" style="--letters:#F97316;--acc:#F97316"><use href="#via"/></svg><span>VectorIA</span></span></div>
+    <div class="cell tile"><svg class="fav" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0B0F17"/><svg x="8" y="17" width="48" height="30" viewBox="0 0 150 60" style="--letters:#F97316;--acc:#F97316"><use href="#via"/></svg></svg>ÍCONO</div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="opt">
+  <header><h2><span>3</span>Bicolor: solo la "i" en color</h2><p>V y A del color del texto; la "i" (la de "inteligencia", la del vector) en acento. Más sobrio, y lee bien chiquito. Se muestra en violeta; en naranja funciona igual.</p></header>
+  <div class="row">
+    <div class="cell dark"><span class="logo"><svg viewBox="0 0 150 60" style="--letters:#E8ECF4;--acc:#8B6CFF"><g><use href="#via"/></g></svg><span>VectorIA</span></span></div>
+    <div class="cell light"><span class="logo"><svg viewBox="0 0 150 60" style="--letters:#0B0F17;--acc:#3B0FA3"><g><use href="#via"/></g></svg><span>VectorIA</span></span></div>
+    <div class="cell tile"><svg class="fav" viewBox="0 0 64 64" style="--acc:#8B6CFF"><rect width="64" height="64" rx="14" fill="#0B0F17"/><svg x="8" y="17" width="48" height="30" viewBox="0 0 150 60" style="--letters:#fff;--acc:#8B6CFF"><g><use href="#via"/></g></svg></svg>ÍCONO</div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="opt">
+  <header><h2><span>4</span>Con punta de vector</h2><p>El punto de la "i" se convierte en una punta de flecha hacia arriba a la derecha: el "vector" del nombre, dicho con un solo detalle. Funciona en cualquiera de los colores anteriores.</p></header>
+  <div class="row">
+    <div class="cell dark"><span class="logo"><svg viewBox="0 0 150 60" style="--letters:#8B6CFF;--acc:#8B6CFF"><use href="#via-arrow"/></svg><span>VectorIA</span></span></div>
+    <div class="cell light"><span class="logo"><svg viewBox="0 0 150 60" style="--letters:#3B0FA3;--acc:#3B0FA3"><use href="#via-arrow"/></svg><span>VectorIA</span></span></div>
+    <div class="cell tile"><svg class="fav" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#3B0FA3"/><svg x="8" y="17" width="48" height="30" viewBox="0 0 150 60" style="--letters:#fff;--acc:#fff"><use href="#via-arrow"/></svg></svg>ÍCONO</div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="opt">
+  <header><h2><span>5</span>Solo el monograma</h2><p>ViA sin el nombre al lado, para cuando la marca ya se conoce: perfil de Instagram, firma de mail, marca de agua en presupuestos, splash de una app.</p></header>
+  <div class="row">
+    <div class="cell dark"><svg viewBox="0 0 150 60" style="height:64px;--letters:#8B6CFF;--acc:#8B6CFF"><use href="#via"/></svg></div>
+    <div class="cell light"><svg viewBox="0 0 150 60" style="height:64px;--letters:#3B0FA3;--acc:#3B0FA3"><use href="#via"/></svg></div>
+    <div class="cell tile"><svg class="fav" viewBox="0 0 64 64"><rect width="64" height="64" rx="32" fill="#3B0FA3"/><svg x="10" y="19" width="44" height="27" viewBox="0 0 150 60" style="--letters:#fff;--acc:#fff"><use href="#via"/></svg></svg>REDONDO (IG)</div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="opt">
+  <header><h2><span>6</span>La "i" es el vector</h2><p>Tu idea, metida en el monograma: la "i" pasa a ser un segmento orientado, con el punto de origen abajo y el extremo (la punta) arriba. V y A quedan como letras; el vector queda en el medio, en color.</p></header>
+  <div class="row">
+    <div class="cell dark"><span class="logo"><svg viewBox="0 0 150 60" style="--letters:#E8ECF4;--acc:#8B6CFF"><g><use href="#via-vector"/></g></svg><span>VectorIA</span></span></div>
+    <div class="cell light"><span class="logo"><svg viewBox="0 0 150 60" style="--letters:#0B0F17;--acc:#3B0FA3"><g><use href="#via-vector"/></g></svg><span>VectorIA</span></span></div>
+    <div class="cell tile"><svg class="fav" viewBox="0 0 64 64" style="--acc:#8B6CFF"><rect width="64" height="64" rx="14" fill="#0B0F17"/><svg x="8" y="17" width="48" height="30" viewBox="0 0 150 60" style="--letters:#fff;--acc:#8B6CFF"><g><use href="#via-vector"/></g></svg></svg>ÍCONO</div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="opt">
+  <header><h2><span>7</span>Vector geométrico puro</h2><p>Sin letras en el símbolo: origen, segmento y extremo, en 45°. Abstracto, técnico, y el ícono más limpio de todos a 16 px. El nombre hace el resto.</p></header>
+  <div class="row">
+    <div class="cell dark"><span class="logo"><svg viewBox="0 0 60 60" style="--letters:#E8ECF4;--acc:#8B6CFF"><g><use href="#vec"/></g></svg><span>VectorIA</span></span></div>
+    <div class="cell light"><span class="logo"><svg viewBox="0 0 60 60" style="--letters:#0B0F17;--acc:#3B0FA3"><g><use href="#vec"/></g></svg><span>VectorIA</span></span></div>
+    <div class="cell tile"><svg class="fav" viewBox="0 0 64 64" style="--acc:#8B6CFF"><rect width="64" height="64" rx="14" fill="#0B0F17"/><svg x="8" y="8" width="48" height="48" viewBox="0 0 60 60" style="--letters:#E8ECF4"><g><use href="#vec"/></g></svg></svg>ÍCONO</div>
+  </div>
+</section>
+
+<div class="navlabel">CÓMO QUEDA EN LA BARRA DE LA LANDING — VIOLETA</div>
+<div class="nav"><span class="logo"><svg viewBox="0 0 150 60" style="--letters:#8B6CFF;--acc:#8B6CFF"><use href="#via"/></svg><span>VectorIA</span></span><div class="menu"><span>Servicios</span><span>Cómo trabajamos</span><span>Casos</span><span>Nosotros</span><span class="btn">Hablemos</span></div></div>
+<div class="navlabel">CÓMO QUEDA EN LA BARRA DE LA LANDING — NARANJA</div>
+<div class="nav"><span class="logo"><svg viewBox="0 0 150 60" style="--letters:#F97316;--acc:#F97316"><use href="#via"/></svg><span>VectorIA</span></span><div class="menu"><span>Servicios</span><span>Cómo trabajamos</span><span>Casos</span><span>Nosotros</span><span class="btn">Hablemos</span></div></div>
+<div class="navlabel">CÓMO QUEDA EN LA BARRA DE LA LANDING — BICOLOR</div>
+<div class="nav"><span class="logo"><svg viewBox="0 0 150 60" style="--letters:#E8ECF4;--acc:#8B6CFF"><g><use href="#via"/></g></svg><span>VectorIA</span></span><div class="menu"><span>Servicios</span><span>Cómo trabajamos</span><span>Casos</span><span>Nosotros</span><span class="btn">Hablemos</span></div></div>
+
+<p class="sub" style="margin:30px auto 0;max-width:1100px">Decime número + color (por ejemplo "4 en violeta" o "3 en naranja") y lo integro en la landing, favicon, íconos de app y la imagen de vista previa para redes. Si elegís violeta, cambio el acento de todo el sitio a violeta para que quede coherente (es una sola variable de CSS).</p>
+</body>
+</html>
