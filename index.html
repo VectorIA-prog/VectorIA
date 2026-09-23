@@ -7,11 +7,17 @@
 <meta name="description" content="Estudio de desarrollo de software en Neuquén. Aplicaciones y sistemas a medida, seguridad informática, infraestructura cloud y sitios web para empresas de la Patagonia y todo el país.">
 <link rel="canonical" href="https://vectoria.ar/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="VectorIA — Software a medida, infraestructura y seguridad informática">
 <meta property="og:description" content="Desarrollamos aplicaciones y sistemas de gestión, los ponemos en producción, los protegemos y los mantenemos. Estudio con base en Neuquén, Argentina.">
 <meta property="og:url" content="https://vectoria.ar/">
 <meta property="og:locale" content="es_AR">
+<meta property="og:image" content="https://vectoria.ar/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0B0F17">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +40,7 @@
   :root{
     --bg:#0B0F17; --bg2:#0F1522; --panel:#131A28; --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
     --text:#E8ECF4; --muted:#98A3B8; --dim:#6B7690;
-    --ac:#F97316; --ac-soft:rgba(249,115,22,.12); --ac-line:rgba(249,115,22,.35);
+    --ac:#8B6CFF; --ac-deep:#3B0FA3; --ac-soft:rgba(139,108,255,.12); --ac-line:rgba(139,108,255,.38);
     --sans:'Inter',system-ui,-apple-system,sans-serif; --head:'Space Grotesk',var(--sans); --mono:'JetBrains Mono',ui-monospace,monospace;
     --max:1140px; --r:14px;
   }
@@ -53,15 +59,15 @@
   .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:10px;font-weight:600;font-size:15px;border:1px solid var(--line2);transition:.2s;white-space:nowrap}
   .btn:hover{border-color:var(--ac);transform:translateY(-1px)}
   .btn.primary{background:var(--ac);border-color:var(--ac);color:#0B0F17}
-  .btn.primary:hover{background:#FB8A3C}
+  .btn.primary:hover{background:#A08AFF}
   .btn svg{width:18px;height:18px}
 
   /* NAV */
   header{position:sticky;top:0;z-index:50;background:rgba(11,15,23,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
   nav{display:flex;align-items:center;justify-content:space-between;height:68px}
   .logo{display:inline-flex;align-items:center;gap:10px;font-family:var(--head);font-weight:700;font-size:22px;letter-spacing:-.02em}
-  .logo .mark{width:30px;height:30px}
-  .logo .ia{color:var(--ac)}
+  .logo .mark{height:26px;width:auto}
+  .logo .ia{color:inherit}
   .menu{display:flex;gap:30px;align-items:center;font-size:14.5px;font-weight:500;color:var(--muted)}
   .menu a:hover{color:var(--text)}
   .menu .btn{padding:9px 16px;font-size:14px;color:var(--text)}
@@ -77,11 +83,11 @@
   /* HERO */
   .hero{padding:110px 0 80px;position:relative;overflow:hidden;min-height:min(92vh,860px);display:flex;align-items:center}
   .hero::before{content:"";position:absolute;inset:0;z-index:1;background:
-    radial-gradient(700px 360px at 18% 0%,rgba(249,115,22,.10),transparent 60%),
+    radial-gradient(700px 360px at 18% 0%,rgba(139,108,255,.12),transparent 60%),
     linear-gradient(var(--line) 1px,transparent 1px) 0 0/100% 64px,
     linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/64px 100%;
     -webkit-mask-image:linear-gradient(180deg,#000 40%,transparent);mask-image:linear-gradient(180deg,#000 40%,transparent);pointer-events:none}
-  .hero.has-video::before{background:radial-gradient(700px 360px at 18% 0%,rgba(249,115,22,.10),transparent 60%)}
+  .hero.has-video::before{background:radial-gradient(700px 360px at 18% 0%,rgba(139,108,255,.12),transparent 60%)}
   /* fondo de video: 3 clips en assets/video/ — orden: hero3, hero2, hero1 */
   .hero-bg{position:absolute;inset:0;z-index:0;background:var(--bg)}
   .hero-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease;filter:saturate(.85)}
@@ -184,7 +190,7 @@
 <header>
   <nav class="wrap">
     <a href="#" class="logo" aria-label="VectorIA">
-      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 6h6l6 13 6-13h6L18.5 27h-5z" fill="#E8ECF4"/><path d="M22 6h6L20.5 22.5 17.6 16z" fill="#F97316"/></svg>
+      <svg class="mark" viewBox="0 0 150 60" aria-hidden="true"><g transform="translate(14,0) skewX(-14)"><polygon fill="currentColor" points="0,0 15,0 27,42 39,0 54,0 34,60 20,60"/><polygon fill="var(--ac)" points="59,14 69,14 69,50 59,50"/><circle fill="var(--ac)" cx="64" cy="54" r="6.5"/><polygon fill="var(--ac)" points="64,0 74,16 54,16"/><path fill="currentColor" fill-rule="evenodd" d="M74,60 L96,0 L110,0 L132,60 L118,60 L114,48 L92,48 L88,60 Z M97,37 L109,37 L103,17 Z"/></g></svg>
       <span>Vector<span class="ia">IA</span></span>
     </a>
     <button class="burger" aria-label="Menú" aria-expanded="false" onclick="const m=document.getElementById('menu');m.classList.toggle('open');this.setAttribute('aria-expanded',m.classList.contains('open'))">☰</button>
