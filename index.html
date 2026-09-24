@@ -216,6 +216,9 @@
   #casos .media .shot{display:none}
   #casos .media .shot.on{display:block}
   #casos .media .shot.logo{object-fit:contain;padding:22%;background:#fff}
+  #casos .media .shot.mark{height:100%;display:none;place-items:center;color:var(--light)}
+  #casos .media .shot.mark.on{display:grid}
+  #casos .media .shot.mark svg{width:32%}
   #casos .media .cap{display:flex;justify-content:flex-end;align-items:center;margin-top:12px;font-family:var(--mono);font-size:10px;letter-spacing:.2em}
   #casos .media .cap a{text-decoration:underline;text-underline-offset:4px}
   @media (max-width:820px){
@@ -231,6 +234,8 @@
   .stack{display:grid;gap:0}
   .card{position:sticky;top:calc(var(--navh) + var(--i,0)*14px);background:var(--tone-bg);color:var(--tone);border-top:1px solid color-mix(in srgb,currentColor 30%,transparent);display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - var(--navh) - 60px);margin-bottom:var(--pad)}
   .card:last-child{margin-bottom:0}
+  .card.nopic{grid-template-columns:1fr}
+  .card.nopic .txt{max-width:60ch;padding-right:0}
   .card .txt{padding:calc(var(--pad)*1.2) var(--pad) var(--pad) 0;display:flex;flex-direction:column;gap:1.2em}
   .card .txt .n{font-family:var(--mono);font-size:11px;letter-spacing:.2em;display:flex;justify-content:space-between}
   .card .txt h3{max-width:12ch}
@@ -255,7 +260,7 @@
   #clientes .head{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:12px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent)}
   #clientes h2{margin:.4em auto .6em;max-width:16ch}
   #clientes .infra{display:grid;grid-template-columns:1fr 1fr;min-height:min(80vh,720px)}
-  #clientes .infra .left{padding:var(--pad);display:grid;grid-template-rows:auto 1fr auto;gap:var(--pad)}
+  #clientes .infra .left{padding:var(--pad);display:grid;grid-template-rows:auto 1fr auto;gap:var(--pad);align-items:end}
   #clientes .infra .left .photo{width:min(100%,380px);aspect-ratio:3/4;justify-self:end}
   #clientes .infra .right{background:var(--dark);color:var(--light);--tone:var(--light);--tone-bg:var(--dark);padding:var(--pad);position:relative;display:flex;flex-direction:column;justify-content:center}
   #clientes .infra .right .slides{position:relative;min-height:340px}
@@ -278,11 +283,8 @@
   /* ============ CÓMO TRABAJAMOS + CONDICIONES ============ */
   #proceso{padding:0}
   #proceso .bar{display:flex;justify-content:space-between;align-items:baseline;padding:calc(var(--pad)*2) var(--pad) .1em;gap:var(--pad)}
-  #proceso .stage{position:relative;height:min(120vh,1100px)}
-  #proceso .stage .duo{position:sticky;top:0;height:100vh;height:100svh}
-  #proceso .stage .duo img{transform:scale(1.12);transition:transform 1.2s var(--ease)}
-  #proceso .stage.in .duo img{transform:none}
-  #proceso .steps{position:absolute;inset:0;z-index:3;display:grid;grid-template-columns:repeat(4,1fr);align-content:end;padding:var(--pad);gap:var(--pad);color:var(--light);--tone:var(--light);--tone-bg:var(--dark)}
+  #proceso .stage{position:relative}
+  #proceso .steps{display:grid;grid-template-columns:repeat(4,1fr);padding:calc(var(--pad)*1.6) var(--pad) var(--pad);gap:var(--pad)}
   #proceso .steps .st{border-top:1px solid color-mix(in srgb,currentColor 45%,transparent);padding-top:14px}
   #proceso .steps .st h4{font-size:clamp(14px,1.3vw,20px);letter-spacing:.12em;margin-bottom:.6em}
   #proceso .steps .st h4::before{content:"◆ ";color:var(--ac);font-size:.6em;vertical-align:middle}
@@ -299,9 +301,7 @@
   #proceso h4.k{font-family:var(--mono);font-weight:400;font-size:10px;letter-spacing:.2em;opacity:.65;margin-bottom:1em}
   @media (max-width:820px){
     #proceso .bar{flex-direction:column;gap:0}
-    #proceso .stage{height:auto}
-    #proceso .stage .duo{position:relative;height:50vh}
-    #proceso .steps{position:relative;grid-template-columns:1fr 1fr;background:var(--dark);padding-top:var(--pad)}
+    #proceso .steps{grid-template-columns:1fr 1fr}
     #proceso .kpis{grid-template-columns:1fr}
     #proceso .grid>*{grid-column:1/-1}
     #proceso .mid{max-height:none}
@@ -334,10 +334,7 @@
   }
 
   /* ============ CONTACTO (CTA) ============ */
-  #contacto{padding:0;min-height:100vh;display:grid;place-items:center;position:relative;isolation:isolate;--tone:var(--light);--tone-bg:var(--dark);color:var(--light)}
-  #contacto .bg{position:absolute;inset:0;z-index:0}
-  #contacto .bg .duo{height:100%}
-  #contacto .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,15,23,.2),rgba(11,15,23,.6))}
+  #contacto{padding:0;min-height:100vh;display:grid;place-items:center;position:relative;isolation:isolate;--tone:var(--light);--tone-bg:var(--dark);color:var(--light);background:var(--dark) repeating-linear-gradient(90deg,rgba(167,158,198,.06) 0 1px,transparent 1px 7px)}
   #contacto .card{position:relative;z-index:2;width:min(92vw,460px);background:var(--light);color:var(--dark);--tone:var(--dark);--tone-bg:var(--light);padding:calc(var(--pad)*1.4) var(--pad);text-align:center;display:grid;gap:1.6em;margin:calc(var(--pad)*2.6) 0;top:auto;min-height:auto;grid-template-columns:1fr;border:0}
   #contacto .card .d5{max-width:14ch;margin:0 auto}
   #contacto .card .lines{display:grid;gap:.5em;font-size:clamp(11px,.95vw,13px);letter-spacing:.14em}
@@ -522,7 +519,7 @@
         <video class="shot on" data-shot="maqpat" muted playsinline loop autoplay preload="metadata" poster="assets/video/casos-maqpat.jpg" src="assets/video/casos-maqpat.mp4" aria-label="Recorrido por el sitio y la app de Máquinas Patagónicas"></video>
         <img class="shot logo" data-shot="calma" src="assets/calma-natural.jpg" alt="Calma Natural" loading="lazy">
         <video class="shot" data-shot="sumo" muted playsinline loop preload="none" poster="assets/video/casos-sumo.jpg" src="assets/video/casos-sumo.mp4" aria-label="Recorrido por el sitio de Sumo App"></video>
-        <img class="shot" data-shot="bertogna" src="assets/img/still-5.jpg" alt="" loading="lazy">
+        <div class="shot mark" data-shot="bertogna"><svg viewBox="0 0 150 60" aria-hidden="true"><g transform="translate(14,0) skewX(-14)"><polygon fill="currentColor" points="0,0 15,0 27,42 39,0 54,0 34,60 20,60"/><polygon fill="var(--ac)" points="59,14 69,14 69,50 59,50"/><circle fill="var(--ac)" cx="64" cy="54" r="6.5"/><polygon fill="var(--ac)" points="64,0 74,16 54,16"/><path fill="currentColor" fill-rule="evenodd" d="M74,60 L96,0 L110,0 L132,60 L118,60 L114,48 L92,48 L88,60 Z M97,37 L109,37 L103,17 Z"/></g></svg></div>
       </div>
       <div class="cap"><a id="casos-cap" href="https://maquinaspatagonicas.com.ar" target="_blank" rel="noopener">maquinaspatagonicas.com.ar ↗</a></div>
     </div>
@@ -566,7 +563,7 @@
       </div>
       <figure class="pic"><div class="shotbox" style="aspect-ratio:16/10;transform:rotate(1deg)"><img src="assets/img/auditoria.jpg" alt="Informe de auditoría de accesos" loading="lazy"></div><figcaption>Informe de auditoría de accesos (ejemplo ilustrativo)</figcaption></figure>
     </article>
-    <article class="card" style="--i:2">
+    <article class="card nopic" style="--i:2">
       <div class="txt">
         <div class="n"><span>Infraestructura</span></div>
         <h3 class="d4">Infraestructura, cloud y mantenimiento</h3>
@@ -578,7 +575,6 @@
           <li><span>Mantenimiento mensual.</span></li>
         </ul>
       </div>
-      <figure class="pic"><div class="ph" style="--rot:-.8deg"><span>Foto pendiente<br>Consola de monitoreo o servidor en funcionamiento</span></div></figure>
     </article>
     <article class="card" style="--i:3">
       <div class="txt">
@@ -605,7 +601,6 @@
     <div class="infra">
       <div class="left">
         <div class="t6"><span class="mono dim">Base</span><br>Neuquén capital, Argentina<br>Presencial en el Alto Valle, remoto en el resto del país</div>
-        <div class="duo photo"><img src="assets/img/still-3.jpg" alt="" loading="lazy"></div>
         <a class="circle" href="#contacto">Contanos tu caso</a>
       </div>
       <div class="right">
@@ -625,7 +620,6 @@
 <section class="on-dark" id="proceso" data-theme="dark">
   <div class="bar d2"><span class="rv">Cómo</span><span class="rv" data-delay="1">Trabajamos</span></div>
   <div class="stage rv">
-    <div class="duo stripes"><img src="assets/img/still-4.jpg" alt="" loading="lazy"></div>
     <div class="steps">
       <div class="st"><h4>Relevamiento</h4><p>Entendemos la operación, los sistemas actuales y qué duele.</p></div>
       <div class="st"><h4>Propuesta escrita</h4><p>Alcance, etapas, plazos y precio cerrado. Por escrito.</p></div>
@@ -688,7 +682,6 @@
 
 <!-- ================= CONTACTO ================= -->
 <section id="contacto" data-theme="dark">
-  <div class="bg"><div class="duo stripes"><img src="assets/img/still-2.jpg" alt="" loading="lazy"></div></div>
   <div class="card rv">
     <p class="t5">Contanos qué parte de tu operación querés resolver, qué sistemas usás hoy y los plazos si los tenés. Respondemos dentro del día hábil.</p>
     <div class="dots" style="letter-spacing:.5em;opacity:.6">· · ·</div>
