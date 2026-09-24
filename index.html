@@ -63,10 +63,9 @@
   /* temas: cada sección declara su tono */
   .on-dark{--tone:var(--light);--tone-bg:var(--dark);background:var(--dark);color:var(--light)}
   .on-light{--tone:var(--dark);--tone-bg:var(--light);background:var(--light);color:var(--dark)}
-  .line{border-color:color-mix(in srgb,currentColor 28%,transparent)}
   .dim{opacity:.62}
 
-  /* ============ TIPOGRAFÍA (fluida, como la referencia) ============ */
+  /* ============ TIPOGRAFÍA (fluida) ============ */
   .d1,.d2,.d3,.d4,.d5,.d6{font-family:var(--serif);font-weight:400;letter-spacing:-.045em;line-height:.86;text-transform:uppercase}
   .d1{font-size:clamp(64px,13.2vw,220px);line-height:.8;letter-spacing:-.06em}
   .d2{font-size:clamp(48px,8.5vw,140px)}
@@ -74,8 +73,6 @@
   .d4{font-size:clamp(30px,5vw,80px)}
   .d5{font-size:clamp(24px,3.5vw,56px);line-height:.95}
   .d6{font-size:clamp(20px,2.1vw,34px);line-height:1}
-  .t1{font-size:clamp(18px,2.85vw,44px);line-height:1.05;letter-spacing:.06em}
-  .t2{font-size:clamp(15px,2.1vw,32px);line-height:1.1;letter-spacing:.06em}
   .t3{font-size:clamp(13px,1.78vw,26px);line-height:1.2;letter-spacing:.08em}
   .t4{font-size:clamp(12px,1.42vw,19px);line-height:1.45;letter-spacing:.06em}
   .t5{font-size:clamp(11px,1.07vw,14px);line-height:1.5;letter-spacing:.1em}
@@ -83,25 +80,22 @@
   .mono{font-family:var(--mono);letter-spacing:.14em}
   .eyebrow{font-family:var(--mono);font-size:clamp(10px,.85vw,12px);letter-spacing:.2em;display:inline-flex;align-items:center;gap:1.1em}
   .eyebrow::before,.eyebrow::after{content:"···";letter-spacing:.08em;opacity:.7}
-  .eyebrow.left::before,.eyebrow.left::after{content:none}
   .center{text-align:center}
   .right{text-align:right}
-  .nowrap{white-space:nowrap}
 
-  /* texto rayado (barras verticales), como el wordmark de la referencia */
+  /* texto rayado (barras verticales) */
   .striped{color:transparent;-webkit-background-clip:text;background-clip:text;
-    background-image:repeating-linear-gradient(90deg,var(--tone) 0 .052em,transparent .052em .094em);
-    transition:background-image .6s}
-  .striped.solid,.striped:hover{background-image:linear-gradient(var(--tone),var(--tone))}
+    background-image:repeating-linear-gradient(90deg,var(--tone) 0 .052em,transparent .052em .094em)}
   @media (prefers-reduced-motion:reduce){.striped{background-image:linear-gradient(var(--tone),var(--tone))}}
 
   /* ============ BOTONES ============ */
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;padding:.95em 1.7em;border-radius:999px;border:1px solid currentColor;font-size:clamp(11px,.95vw,13px);letter-spacing:.14em;line-height:1;transition:background .35s,color .35s,transform .35s var(--ease);white-space:nowrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;padding:.95em 1.7em;border-radius:999px;border:1px solid currentColor;font-size:clamp(11px,.95vw,13px);letter-spacing:.14em;line-height:1;transition:background .35s,color .35s;white-space:nowrap}
   .btn:hover{background:var(--tone);color:var(--tone-bg)}
   .btn.fill{background:var(--tone);color:var(--tone-bg)}
   .btn.fill:hover{background:transparent;color:var(--tone)}
-  .btn.ac{border-color:var(--ac);background:var(--ac);color:#fff}
-  .btn.ac:hover{background:transparent;color:inherit}
+  .btn.wa{border-color:var(--wa);background:var(--wa);color:#fff}
+  .btn.wa:hover{background:transparent;color:inherit;border-color:currentColor}
+  .btn.wa svg{width:16px;height:16px}
   .circle{position:relative;display:grid;place-items:center;width:clamp(120px,11vw,160px);aspect-ratio:1;border:1px solid currentColor;border-radius:50%;text-align:center;padding:1.2em;font-size:clamp(10px,.85vw,12px);letter-spacing:.16em;line-height:1.4;transition:background .35s,color .35s}
   .circle:hover{background:var(--tone);color:var(--tone-bg)}
   .circle::after{content:"";position:absolute;inset:6px;border:1px dashed color-mix(in srgb,currentColor 35%,transparent);border-radius:50%;animation:spin 40s linear infinite}
@@ -109,19 +103,12 @@
   .arrow{display:inline-grid;place-items:center;width:44px;height:44px;border:1px solid currentColor;border-radius:50%;transition:background .3s,color .3s}
   .arrow:hover{background:var(--tone);color:var(--tone-bg)}
   .arrow svg{width:14px;height:14px}
-  .play{display:inline-grid;place-items:center;width:52px;height:52px;border:1px solid currentColor;border-radius:50%;flex:none}
-  .play svg{width:14px;height:14px;margin-left:2px}
 
   /* ============ LAYOUT ============ */
   .section{position:relative;padding:calc(var(--pad)*2.6) var(--pad)}
-  .wrap{position:relative;width:100%}
   .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--pad)}
-  .col-6{grid-column:span 6}.col-5{grid-column:span 5}.col-4{grid-column:span 4}.col-3{grid-column:span 3}.col-7{grid-column:span 7}.col-8{grid-column:span 8}
-  .col-4.off-1{grid-column:2/span 4}.col-5.off-6{grid-column:7/span 5}.col-5.off-7{grid-column:8/span 5}.col-5.off-4{grid-column:5/span 5}.col-6.off-1{grid-column:2/span 6}.col-3.off-10{grid-column:10/span 3}
-  .stack-gap>*+*{margin-top:1.2em}
-  .rule{height:1px;background:currentColor;opacity:.28}
+  .col-5.off-7{grid-column:8/span 5}.col-5.off-1{grid-column:2/span 5}
   .rule-v{width:1px;background:currentColor;opacity:.28}
-  .hr{border:0;border-top:1px solid;opacity:.28}
 
   /* aparición al scroll */
   .rv{opacity:0;transform:translateY(22px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
@@ -136,6 +123,9 @@
   .duo.stripes::before{content:"";position:absolute;inset:0;z-index:2;background:repeating-linear-gradient(90deg,var(--tone-bg) 0 1px,transparent 1px 4px);opacity:.55;pointer-events:none}
   .duo.frame{border:1px solid color-mix(in srgb,currentColor 30%,transparent);padding:6px}
   .duo.frame img{border:1px solid color-mix(in srgb,currentColor 30%,transparent)}
+  /* capturas y videos de sistemas: a color, sin bitono */
+  .shotbox{position:relative;overflow:hidden;background:var(--dark);border:1px solid color-mix(in srgb,currentColor 30%,transparent);padding:6px}
+  .shotbox img,.shotbox video{width:100%;height:100%;object-fit:cover;display:block}
 
   /* ============ PRELOADER ============ */
   #loader{position:fixed;inset:0;z-index:1000;background:var(--dark);color:var(--light);--tone:var(--light);--tone-bg:var(--dark);display:flex;flex-direction:column;justify-content:space-between;padding:var(--pad);transition:transform 1s var(--ease);overflow:hidden}
@@ -147,7 +137,7 @@
   #loader.go .bar{width:100%}
 
   /* ============ NAV ============ */
-  nav.top{position:fixed;inset:0 0 auto 0;z-index:900;height:var(--navh);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 var(--pad);color:var(--light);--tone:var(--light);--tone-bg:var(--dark);transition:color .5s;mix-blend-mode:normal}
+  nav.top{position:fixed;inset:0 0 auto 0;z-index:900;height:var(--navh);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 var(--pad);color:var(--light);--tone:var(--light);--tone-bg:var(--dark);transition:color .5s}
   nav.top[data-theme="light"]{color:var(--dark);--tone:var(--dark);--tone-bg:var(--light)}
   nav.top .l,nav.top .r{display:flex;align-items:center;gap:clamp(14px,2.2vw,34px);font-size:clamp(10px,.85vw,12px);letter-spacing:.16em}
   nav.top .r{justify-content:flex-end}
@@ -182,145 +172,26 @@
   @media (max-width:820px){.side{display:none}}
 
   /* ============ HERO ============ */
-  .hero{height:240vh;position:relative;--tone:var(--light);--tone-bg:var(--dark);color:var(--light)}
+  .hero{height:200vh;position:relative;--tone:var(--light);--tone-bg:var(--dark);color:var(--light)}
   .hero .pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:var(--navh) var(--pad) var(--pad)}
   .hero-bg{position:absolute;inset:0;z-index:0;background:var(--dark)}
   .hero-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease;filter:saturate(.6) contrast(1.05)}
   .hero-bg video.on{opacity:1}
-  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,15,23,.55),rgba(11,15,23,.35) 45%,rgba(11,15,23,.85) 100%)}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,15,23,.6),rgba(11,15,23,.45) 45%,rgba(11,15,23,.88) 100%)}
   .hero-bg .veil{position:absolute;inset:0;background:var(--dark);opacity:0;z-index:2}
   .hero-bg .bars{position:absolute;inset:0;z-index:3;background:repeating-linear-gradient(90deg,var(--dark) 0 2px,transparent 2px 6px);opacity:0}
-  .hero .fg{position:relative;z-index:4;display:grid;gap:clamp(18px,3vw,48px)}
-  .hero .fg .eyebrow{justify-self:center}
-  .hero .word{text-align:center;white-space:nowrap;letter-spacing:-.02em}
-  .hero .cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--pad);font-size:clamp(10px,.95vw,13px);letter-spacing:.16em;line-height:1.6}
-  .hero .cols>*:nth-child(2){text-align:center}
-  .hero .cols>*:nth-child(3){text-align:right}
-  .hero .cols .mark{width:34px;display:inline-block;vertical-align:middle;margin-right:8px}
-  .hero .cta{position:absolute;right:var(--pad);bottom:var(--pad);z-index:5}
+  .hero .fg{position:relative;z-index:4;display:grid;gap:clamp(18px,2.4vw,36px);max-width:1100px;margin:0 auto;text-align:center;justify-items:center}
+  .hero .fg h1{max-width:12ch}
+  .hero .fg p{max-width:56ch;text-transform:none;letter-spacing:.02em;font-size:clamp(14px,1.25vw,18px);line-height:1.55;opacity:.9}
   .hero .scroll{position:absolute;left:var(--pad);bottom:var(--pad);z-index:5;display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10px;letter-spacing:.2em}
   .hero .scroll i{display:block;width:60px;height:1px;background:currentColor;opacity:.5}
-  .hero .prologue-hint{position:absolute;left:var(--pad);top:calc(var(--navh) + 12px);z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.2em;line-height:1.6;opacity:.7}
+  .hero .hint{position:absolute;z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.2em;line-height:1.6;opacity:.7}
+  .hero .hint.l{left:var(--pad);top:calc(var(--navh) + 12px)}
+  .hero .hint.r{right:var(--pad);bottom:var(--pad);text-align:right}
   @media (max-width:820px){
-    .hero{height:180vh}
-    .hero .cols{grid-template-columns:1fr;gap:10px;text-align:center}
-    .hero .cols>*{text-align:center!important}
-    .hero .cta{position:relative;right:auto;bottom:auto;align-self:center;margin-top:18px}
-    .hero .word{font-size:clamp(56px,17.5vw,120px)}
-    .hero .prologue-hint{display:none}
-  }
-
-  /* ============ PRÓLOGO ============ */
-  #prologo{min-height:100vh;display:grid;place-items:center;text-align:center}
-  #prologo .quote{max-width:min(78vw,1080px);margin:1.4em auto 1.6em}
-  #prologo .quote .w{display:inline-block;opacity:.16;transition:opacity .35s}
-  #prologo .quote .w.on{opacity:1}
-
-  /* ============ NOSOTROS ============ */
-  #nosotros .brand{grid-column:7/13;text-align:right}
-  #nosotros .brand .d1{font-size:clamp(64px,11.5vw,200px);line-height:.78}
-  #nosotros .brand .by{display:flex;justify-content:flex-end;align-items:center;gap:12px;margin-top:.6em}
-  #nosotros .brand .by svg{width:44px}
-  #nosotros .block h3{margin-bottom:.35em}
-  #nosotros .block .rule{width:60px;margin-bottom:1.4em}
-  #nosotros .block p{max-width:38ch}
-  #nosotros .video{position:relative;margin-top:2em;max-width:420px}
-  #nosotros .video .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;background:rgba(11,15,23,.25);backdrop-filter:blur(4px)}
-  #nosotros .video.playing .play{display:none}
-  #nosotros .video video{aspect-ratio:16/10}
-  #nosotros .video figcaption{margin-top:.9em;font-size:clamp(10px,.85vw,12px);letter-spacing:.16em}
-  #nosotros .bleed{margin:calc(var(--pad)*2.6) calc(var(--pad)*-1) calc(var(--pad)*-2.6);height:min(78vh,720px)}
-  @media (max-width:820px){
-    #nosotros .brand{grid-column:1/-1;text-align:left}
-    #nosotros .brand .by{justify-content:flex-start}
-    #nosotros .grid>*{grid-column:1/-1}
-    #nosotros .bleed{height:46vh}
-  }
-
-  /* ============ BASE (UBICACIÓN) ============ */
-  #base .title{display:grid;gap:0;margin-bottom:calc(var(--pad)*1.4)}
-  #base .title .l1{padding-left:44%}
-  #base .title .l2{padding-left:14%}
-  #base .title .l3{padding-left:30%}
-  #base .title .small{font-family:var(--sans);font-size:clamp(14px,1.9vw,28px);letter-spacing:.14em;vertical-align:middle;margin-right:.8em}
-  #base .map{position:relative;width:100%;aspect-ratio:1/.92;overflow:hidden}
-  #base .map svg{width:100%;height:100%}
-  #base .map .pin{position:absolute;display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:clamp(9px,.75vw,11px);letter-spacing:.14em;line-height:1.3;white-space:nowrap}
-  #base .map .pin::before{content:"";width:10px;height:10px;border:1px solid currentColor;border-radius:50%;flex:none;box-shadow:inset 0 0 0 2px var(--tone-bg),inset 0 0 0 10px currentColor}
-  #base .map .pin.base{font-family:var(--sans);font-weight:700;letter-spacing:.06em;font-size:clamp(14px,1.4vw,20px);text-transform:none}
-  #base .map .pin.base::before{width:16px;height:16px;border-color:var(--ac);box-shadow:inset 0 0 0 3px var(--tone-bg),inset 0 0 0 12px var(--ac)}
-  #base .map .pin small{display:block;opacity:.6;font-size:.85em}
-  #base .copy{padding-top:14%}
-  #base .copy p{max-width:44ch}
-  #base .slider-wrap{margin-top:calc(var(--pad)*1.6)}
-  #base .infra-head{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:12px;margin-bottom:0;font-family:var(--mono);font-size:10px;letter-spacing:.2em}
-  #base .infra{display:grid;grid-template-columns:1fr 1fr;min-height:min(80vh,720px)}
-  #base .infra .left{padding:var(--pad);display:grid;grid-template-rows:auto 1fr auto;gap:var(--pad)}
-  #base .infra .left .photo{width:min(100%,380px);aspect-ratio:3/4;justify-self:end}
-  #base .infra .right{background:var(--light);color:var(--dark);--tone:var(--dark);--tone-bg:var(--light);padding:var(--pad);position:relative;display:flex;flex-direction:column;justify-content:center}
-  #base .infra .right .slides{position:relative;min-height:340px}
-  #base .infra .right .slide{position:absolute;inset:0;display:grid;place-items:center;text-align:center;opacity:0;transition:opacity .6s;pointer-events:none}
-  #base .infra .right .slide.on{opacity:1;pointer-events:auto}
-  #base .infra .right .num{position:relative;width:clamp(150px,20vw,260px);aspect-ratio:1;border:1px solid currentColor;border-radius:50%;display:grid;place-items:center;margin:0 auto .8em}
-  #base .infra .right .num .d2{line-height:1}
-  #base .infra .right .num .d2 small{font-family:var(--serif);font-size:.42em;letter-spacing:-.02em;vertical-align:baseline}
-  #base .infra .right .slide h4{max-width:26ch;margin:0 auto}
-  #base .infra .right .slide p{max-width:36ch;margin:.7em auto 0;opacity:.75}
-  #base .infra .ctrl{display:flex;justify-content:space-between;align-items:center;margin-top:var(--pad);font-family:var(--mono);font-size:11px;letter-spacing:.2em}
-  #base .infra .ctrl .arrows{display:flex;gap:8px}
-  @media (max-width:820px){
-    #base .title .l1,#base .title .l2,#base .title .l3{padding-left:0}
-    #base .grid>*{grid-column:1/-1}
-    #base .copy{padding-top:0}
-    #base .infra{grid-template-columns:1fr}
-    #base .infra .left .photo{justify-self:start;width:min(100%,260px)}
-  }
-
-  /* ============ SERVICIOS (tarjetas apiladas) ============ */
-  #servicios .head{min-height:60vh;display:grid;place-items:center;text-align:center;padding-bottom:calc(var(--pad)*1.5)}
-  #servicios .head h2{max-width:14ch;margin:.5em auto 0}
-  .stack{display:grid;gap:0}
-  .card{position:sticky;top:calc(var(--navh) + var(--i,0)*14px);background:var(--light);color:var(--dark);border-top:1px solid color-mix(in srgb,currentColor 30%,transparent);display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - var(--navh) - 60px);margin-bottom:var(--pad)}
-  .card:last-child{margin-bottom:0}
-  .card .txt{padding:calc(var(--pad)*1.2) var(--pad) var(--pad) 0;display:flex;flex-direction:column;gap:1.2em}
-  .card .txt .n{font-family:var(--mono);font-size:11px;letter-spacing:.2em;display:flex;justify-content:space-between}
-  .card .txt h3{max-width:12ch}
-  .card .txt .lead{max-width:34ch;font-family:var(--serif);text-transform:none;letter-spacing:0;font-size:clamp(20px,1.9vw,30px);line-height:1.15;font-style:italic}
-  .card .txt ul{list-style:none;max-width:44ch;margin-top:auto}
-  .card .txt li{padding:.85em 0;border-top:1px solid color-mix(in srgb,currentColor 25%,transparent);display:grid;grid-template-columns:2.4em 1fr;gap:.6em;align-items:baseline}
-  .card .txt li b{font-family:var(--mono);font-weight:400;font-size:10px;letter-spacing:.18em;opacity:.6}
-  .card .pic{padding:calc(var(--pad)*1.2) 0 var(--pad) var(--pad);display:grid}
-  .card .pic .duo{aspect-ratio:4/3.4;width:100%;align-self:start;transform:rotate(var(--rot,0deg))}
-  .card .pic figcaption{font-family:var(--mono);font-size:10px;letter-spacing:.18em;margin-top:1em;opacity:.7}
-  .card.note{grid-template-columns:1fr;text-align:center;min-height:auto;padding:calc(var(--pad)*1.6) var(--pad)}
-  .card.note p{max-width:60ch;margin:0 auto}
-  .card.note .d5{max-width:22ch;margin:.4em auto .8em}
-  @media (max-width:820px){
-    .card{grid-template-columns:1fr;position:relative;top:auto;min-height:auto}
-    .card .txt{padding-right:0}
-    .card .pic{padding-left:0;order:-1}
-    .card .pic .duo{aspect-ratio:16/10;transform:none}
-  }
-
-  /* ============ PROCESO (timeline) ============ */
-  #proceso{padding:0}
-  #proceso .bar{display:flex;justify-content:space-between;align-items:baseline;padding:calc(var(--pad)*2) var(--pad) .1em;gap:var(--pad)}
-  #proceso .stage{position:relative;height:min(120vh,1100px)}
-  #proceso .stage .duo{position:sticky;top:0;height:100vh;height:100svh}
-  #proceso .stage .duo img{transform:scale(1.12);transition:transform 1.2s var(--ease)}
-  #proceso .stage.in .duo img{transform:none}
-  #proceso .steps{position:absolute;inset:0;z-index:3;display:grid;grid-template-columns:repeat(4,1fr);align-content:end;padding:var(--pad);gap:var(--pad);color:var(--light);--tone:var(--light);--tone-bg:var(--dark)}
-  #proceso .steps .st{border-top:1px solid color-mix(in srgb,currentColor 45%,transparent);padding-top:14px;background:linear-gradient(180deg,transparent,rgba(11,15,23,.5))}
-  #proceso .steps .st b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.4vw,70px);line-height:.9;letter-spacing:-.04em;margin-bottom:.3em}
-  #proceso .steps .st h4{font-size:clamp(12px,1.05vw,15px);letter-spacing:.16em;margin-bottom:.6em}
-  #proceso .steps .st p{font-size:clamp(11px,.9vw,13px);letter-spacing:.06em;opacity:.8;max-width:26ch;text-transform:none}
-  #proceso .stage .ends{position:absolute;z-index:3;top:var(--pad);left:var(--pad);right:var(--pad);display:flex;justify-content:space-between;color:var(--light);font-family:var(--serif);font-size:clamp(28px,4vw,64px);letter-spacing:-.04em;line-height:1}
-  @media (max-width:820px){
-    #proceso .bar{flex-direction:column;gap:0}
-    #proceso .stage{height:auto}
-    #proceso .stage .duo{position:relative;height:50vh}
-    #proceso .steps{position:relative;grid-template-columns:1fr 1fr;background:var(--dark);padding-top:var(--pad)}
-    #proceso .stage .ends{top:auto;bottom:calc(50vh + var(--pad));display:none}
+    .hero{height:160vh}
+    .hero .hint{display:none}
+    .hero .fg h1{max-width:11ch}
   }
 
   /* ============ CASOS (tabs) ============ */
@@ -344,9 +215,10 @@
   #casos .panel blockquote cite{display:block;font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.2em;text-transform:uppercase;margin-top:.8em;opacity:.7}
   #casos .panel .acts{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:auto}
   #casos .media{grid-column:8/13;position:sticky;top:calc(var(--navh) + 20px);align-self:start}
-  #casos .media .duo{aspect-ratio:4/3.2}
+  #casos .media .shotbox{aspect-ratio:16/10}
   #casos .media .shot{display:none}
   #casos .media .shot.on{display:block}
+  #casos .media .shot.logo{object-fit:contain;padding:22%;background:#fff}
   #casos .media .cap{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-family:var(--mono);font-size:10px;letter-spacing:.2em}
   @media (max-width:820px){
     #casos .intro,#casos .aside,#casos .types,#casos .panel,#casos .media{grid-column:1/-1;position:static}
@@ -355,83 +227,116 @@
     #casos .rule-v{display:none}
   }
 
-  /* ============ CONDICIONES ============ */
+  /* ============ SERVICIOS (tarjetas apiladas) ============ */
+  #servicios .head{min-height:50vh;display:grid;place-items:center;text-align:center;padding-bottom:calc(var(--pad)*1.5)}
+  #servicios .head h2{max-width:14ch;margin:.5em auto 0}
+  .stack{display:grid;gap:0}
+  .card{position:sticky;top:calc(var(--navh) + var(--i,0)*14px);background:var(--tone-bg);color:var(--tone);border-top:1px solid color-mix(in srgb,currentColor 30%,transparent);display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - var(--navh) - 60px);margin-bottom:var(--pad)}
+  .card:last-child{margin-bottom:0}
+  .card .txt{padding:calc(var(--pad)*1.2) var(--pad) var(--pad) 0;display:flex;flex-direction:column;gap:1.2em}
+  .card .txt .n{font-family:var(--mono);font-size:11px;letter-spacing:.2em;display:flex;justify-content:space-between}
+  .card .txt h3{max-width:12ch}
+  .card .txt .lead{max-width:34ch;font-family:var(--serif);text-transform:none;letter-spacing:0;font-size:clamp(20px,1.9vw,30px);line-height:1.15;font-style:italic}
+  .card .txt ul{list-style:none;max-width:48ch;margin-top:auto}
+  .card .txt li{padding:.85em 0;border-top:1px solid color-mix(in srgb,currentColor 25%,transparent);display:grid;grid-template-columns:2.4em 1fr;gap:.6em;align-items:baseline}
+  .card .txt li b{font-family:var(--mono);font-weight:400;font-size:10px;letter-spacing:.18em;opacity:.6}
+  .card .txt li small{display:block;text-transform:none;letter-spacing:.02em;opacity:.75;margin-top:.3em;font-size:.95em}
+  .card .pic{padding:calc(var(--pad)*1.2) 0 var(--pad) var(--pad);display:grid}
+  .card .pic .duo{aspect-ratio:4/3.4;width:100%;align-self:start;transform:rotate(var(--rot,0deg))}
+  .card .pic figcaption{font-family:var(--mono);font-size:10px;letter-spacing:.18em;margin-top:1em;opacity:.7}
+  @media (max-width:820px){
+    .card{grid-template-columns:1fr;position:relative;top:auto;min-height:auto}
+    .card .txt{padding-right:0}
+    .card .pic{padding-left:0;order:-1}
+    .card .pic .duo{aspect-ratio:16/10;transform:none}
+  }
+
+  /* ============ CON QUIÉN TRABAJAMOS (slider) ============ */
+  #clientes .head{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:12px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent)}
+  #clientes h2{margin:.4em auto .6em;max-width:16ch}
+  #clientes .infra{display:grid;grid-template-columns:1fr 1fr;min-height:min(80vh,720px)}
+  #clientes .infra .left{padding:var(--pad);display:grid;grid-template-rows:auto 1fr auto;gap:var(--pad)}
+  #clientes .infra .left .photo{width:min(100%,380px);aspect-ratio:3/4;justify-self:end}
+  #clientes .infra .right{background:var(--dark);color:var(--light);--tone:var(--light);--tone-bg:var(--dark);padding:var(--pad);position:relative;display:flex;flex-direction:column;justify-content:center}
+  #clientes .infra .right .slides{position:relative;min-height:340px}
+  #clientes .infra .right .slide{position:absolute;inset:0;display:grid;place-items:center;text-align:center;opacity:0;transition:opacity .6s;pointer-events:none}
+  #clientes .infra .right .slide.on{opacity:1;pointer-events:auto}
+  #clientes .infra .right .num{position:relative;width:clamp(150px,20vw,260px);aspect-ratio:1;border:1px solid currentColor;border-radius:50%;display:grid;place-items:center;margin:0 auto .8em}
+  #clientes .infra .right .num .d2{line-height:1}
+  #clientes .infra .right .slide h4{max-width:26ch;margin:0 auto}
+  #clientes .infra .right .slide p{max-width:36ch;margin:.7em auto 0;opacity:.75}
+  #clientes .infra .ctrl{display:flex;justify-content:space-between;align-items:center;margin-top:var(--pad);font-family:var(--mono);font-size:11px;letter-spacing:.2em}
+  #clientes .infra .ctrl .arrows{display:flex;gap:8px}
+  @media (max-width:820px){
+    #clientes .infra{grid-template-columns:1fr}
+    #clientes .infra .left .photo{justify-self:start;width:min(100%,260px)}
+  }
+
+  /* ============ CÓMO TRABAJAMOS + CONDICIONES ============ */
+  #proceso{padding:0}
+  #proceso .bar{display:flex;justify-content:space-between;align-items:baseline;padding:calc(var(--pad)*2) var(--pad) .1em;gap:var(--pad)}
+  #proceso .stage{position:relative;height:min(120vh,1100px)}
+  #proceso .stage .duo{position:sticky;top:0;height:100vh;height:100svh}
+  #proceso .stage .duo img{transform:scale(1.12);transition:transform 1.2s var(--ease)}
+  #proceso .stage.in .duo img{transform:none}
+  #proceso .steps{position:absolute;inset:0;z-index:3;display:grid;grid-template-columns:repeat(4,1fr);align-content:end;padding:var(--pad);gap:var(--pad);color:var(--light);--tone:var(--light);--tone-bg:var(--dark)}
+  #proceso .steps .st{border-top:1px solid color-mix(in srgb,currentColor 45%,transparent);padding-top:14px}
+  #proceso .steps .st b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.4vw,70px);line-height:.9;letter-spacing:-.04em;margin-bottom:.3em}
+  #proceso .steps .st h4{font-size:clamp(12px,1.05vw,15px);letter-spacing:.16em;margin-bottom:.6em}
+  #proceso .steps .st p{font-size:clamp(11px,.9vw,13px);letter-spacing:.06em;opacity:.8;max-width:26ch;text-transform:none}
+  #proceso .stage .ends{position:absolute;z-index:3;top:var(--pad);left:var(--pad);right:var(--pad);display:flex;justify-content:space-between;color:var(--light);font-family:var(--serif);font-size:clamp(28px,4vw,64px);letter-spacing:-.04em;line-height:1}
+  #proceso .cond{padding:0 var(--pad) calc(var(--pad)*2.6)}
   .marquee{overflow:hidden;white-space:nowrap;border-top:1px solid;border-bottom:1px solid;border-color:color-mix(in srgb,currentColor 28%,transparent);padding:.25em 0}
   .marquee .in{display:inline-block;animation:marq 38s linear infinite}
   .marquee .in span{padding:0 .5em}
   .marquee .in span::after{content:"✦";font-size:.35em;vertical-align:middle;padding-left:1.2em;color:var(--ac)}
   @keyframes marq{to{transform:translateX(-50%)}}
   @media (prefers-reduced-motion:reduce){.marquee .in{animation:none}}
-  #condiciones .kpis{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--pad);margin-top:var(--pad)}
-  #condiciones .kpis .k{font-family:var(--mono);font-size:10px;letter-spacing:.2em;opacity:.65;margin-bottom:.6em}
-  #condiciones .kpis .v{line-height:.92}
-  #condiciones .mid{position:relative;aspect-ratio:4/3.3;max-height:70vh;margin:0 auto}
-  #condiciones .facts{list-style:none}
-  #condiciones .facts li{display:flex;justify-content:space-between;gap:1em;padding:.8em 0;border-top:1px solid color-mix(in srgb,currentColor 28%,transparent);font-size:clamp(11px,.95vw,13px);letter-spacing:.12em}
-  #condiciones .facts li:last-child{border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent)}
-  #condiciones .facts li b{font-weight:400;opacity:.6;font-family:var(--mono);font-size:10px;letter-spacing:.2em;flex:none}
-  #condiciones .comp{list-style:none;counter-reset:c}
-  #condiciones .comp li{counter-increment:c;padding:.8em 0;border-top:1px solid color-mix(in srgb,currentColor 28%,transparent);font-size:clamp(11px,.95vw,13px);letter-spacing:.1em;display:grid;grid-template-columns:2.4em 1fr;gap:.6em}
-  #condiciones .comp li::before{content:counter(c,decimal-leading-zero);font-family:var(--mono);font-size:10px;letter-spacing:.2em;opacity:.6;padding-top:.2em}
-  #condiciones h4.k{font-family:var(--mono);font-weight:400;font-size:10px;letter-spacing:.2em;opacity:.65;margin-bottom:1em}
+  #proceso .kpis{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--pad);margin-top:var(--pad)}
+  #proceso .kpis .k{font-family:var(--mono);font-size:10px;letter-spacing:.2em;opacity:.65;margin-bottom:.6em}
+  #proceso .kpis .v{line-height:.92}
+  #proceso .mid{aspect-ratio:4/3.3;max-height:60vh}
+  #proceso .comp{list-style:none;counter-reset:c}
+  #proceso .comp li{counter-increment:c;padding:.9em 0;border-top:1px solid color-mix(in srgb,currentColor 28%,transparent);font-size:clamp(11px,1vw,14px);letter-spacing:.1em;display:grid;grid-template-columns:2.4em 1fr;gap:.6em}
+  #proceso .comp li:last-child{border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent)}
+  #proceso .comp li::before{content:counter(c,decimal-leading-zero);font-family:var(--mono);font-size:10px;letter-spacing:.2em;opacity:.6;padding-top:.2em}
+  #proceso h4.k{font-family:var(--mono);font-weight:400;font-size:10px;letter-spacing:.2em;opacity:.65;margin-bottom:1em}
   @media (max-width:820px){
-    #condiciones .kpis{grid-template-columns:1fr}
-    #condiciones .grid>*{grid-column:1/-1}
-    #condiciones .mid{max-height:none}
+    #proceso .bar{flex-direction:column;gap:0}
+    #proceso .stage{height:auto}
+    #proceso .stage .duo{position:relative;height:50vh}
+    #proceso .steps{position:relative;grid-template-columns:1fr 1fr;background:var(--dark);padding-top:var(--pad)}
+    #proceso .stage .ends{display:none}
+    #proceso .kpis{grid-template-columns:1fr}
+    #proceso .grid>*{grid-column:1/-1}
+    #proceso .mid{max-height:none}
   }
 
-  /* ============ INTEGRACIONES (arrastrar) ============ */
-  #integraciones .hint{display:flex;align-items:center;justify-content:center;gap:14px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;margin-bottom:calc(var(--pad)*1.4)}
-  #integraciones .hint .dot{width:24px;height:24px;border:1px solid currentColor;border-radius:50%;display:grid;place-items:center}
-  #integraciones .hint .dot::after{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
-  #integraciones .hint .path{width:120px;height:1px;border-top:1px dashed currentColor;opacity:.6}
-  .drag{display:flex;gap:var(--pad);overflow-x:auto;scroll-snap-type:x mandatory;cursor:grab;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:4px;user-select:none}
-  .drag::-webkit-scrollbar{display:none}
-  .drag.dragging{cursor:grabbing;scroll-snap-type:none}
-  .drag>*{scroll-snap-align:start;flex:none}
-  #integraciones .it{width:min(78vw,720px);display:grid;gap:1.4em;align-content:start}
-  #integraciones .it .k{font-family:var(--mono);font-size:10px;letter-spacing:.2em;opacity:.65;display:flex;justify-content:space-between;border-top:1px solid color-mix(in srgb,currentColor 28%,transparent);padding-top:12px}
-  #integraciones .it h3{max-width:20ch}
-  #integraciones .it p{max-width:44ch;opacity:.8}
-
-  /* ============ EQUIPO ============ */
-  #equipo .statement{max-width:24ch;margin:.5em auto 1.6em;text-align:center}
-  #equipo .cardlogo{grid-column:4/10;background:var(--light);color:var(--dark);--tone:var(--dark);--tone-bg:var(--light);padding:var(--pad);text-align:center;display:grid;gap:var(--pad);min-height:min(70vh,640px);align-content:space-between}
-  #equipo .cardlogo p{max-width:48ch;margin:0 auto}
-  #equipo .cardlogo .dots{letter-spacing:.5em;opacity:.6}
-  #equipo .cardlogo .logo{display:flex;justify-content:center;align-items:center;gap:16px;font-weight:700;font-size:clamp(26px,3.2vw,48px);letter-spacing:.01em;text-transform:none}
-  #equipo .cardlogo .logo svg{width:clamp(70px,8vw,120px)}
-  #equipo .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--pad);margin-top:calc(var(--pad)*2.2)}
-  #equipo .facts .f{text-align:center}
-  #equipo .facts .f b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(48px,7vw,120px);line-height:.9;letter-spacing:-.05em}
-  #equipo .facts .f p{font-size:clamp(10px,.85vw,12px);letter-spacing:.16em;opacity:.8;max-width:22ch;margin:1em auto 0}
-  #equipo .bleed{margin:calc(var(--pad)*2) calc(var(--pad)*-1) calc(var(--pad)*-2.6);height:min(70vh,640px)}
+  /* ============ NOSOTROS ============ */
+  #nosotros .statement{max-width:22ch;margin:.5em auto 1.8em;text-align:center}
+  #nosotros .portrait{grid-column:2/6}
+  #nosotros .portrait .ph{aspect-ratio:4/5;background:var(--dark);color:var(--light);border:1px solid color-mix(in srgb,currentColor 30%,transparent);padding:6px}
+  #nosotros .portrait .ph .in{height:100%;border:1px solid color-mix(in srgb,var(--light) 30%,transparent);display:grid;place-items:center;align-content:center;gap:16px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.2em;opacity:.85}
+  #nosotros .portrait .ph .in svg{width:40%}
+  #nosotros .portrait .ph img{width:100%;height:100%;object-fit:cover}
+  #nosotros .portrait .who{margin-top:14px;display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:10px;letter-spacing:.2em}
+  #nosotros .portrait .who b{font-family:var(--sans);font-weight:700;font-size:clamp(14px,1.3vw,18px);letter-spacing:.02em;text-transform:none;display:block;margin-bottom:.3em}
+  #nosotros .copy{grid-column:7/12;align-self:center}
+  #nosotros .copy p{max-width:46ch}
+  #nosotros .copy p+p{margin-top:1.2em}
+  #nosotros .copy .big{font-family:var(--serif);text-transform:none;letter-spacing:0;font-size:clamp(20px,2vw,32px);line-height:1.15;max-width:26ch;margin-bottom:1.2em}
+  #nosotros .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--pad);margin-top:calc(var(--pad)*2.2);border-top:1px solid color-mix(in srgb,currentColor 28%,transparent);padding-top:calc(var(--pad)*1.4)}
+  #nosotros .facts .f{text-align:center}
+  #nosotros .facts .f b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(48px,7vw,120px);line-height:.9;letter-spacing:-.05em}
+  #nosotros .facts .f p{font-size:clamp(10px,.85vw,12px);letter-spacing:.16em;opacity:.8;max-width:22ch;margin:1em auto 0}
   @media (max-width:820px){
-    #equipo .cardlogo{grid-column:1/-1}
-    #equipo .facts{grid-template-columns:1fr 1fr}
+    #nosotros .portrait,#nosotros .copy{grid-column:1/-1}
+    #nosotros .portrait .ph{max-width:320px}
+    #nosotros .facts{grid-template-columns:1fr 1fr}
   }
-
-  /* ============ GALERÍA ============ */
-  #galeria{padding-bottom:0}
-  #galeria .bar{display:flex;justify-content:space-between;align-items:baseline;gap:var(--pad);margin-bottom:.15em}
-  #galeria .drag{gap:12px;margin:0 calc(var(--pad)*-1);padding:0 var(--pad) var(--pad)}
-  #galeria .g{width:min(88vw,1180px)}
-  #galeria .g .duo{aspect-ratio:16/10;border:1px solid color-mix(in srgb,currentColor 28%,transparent)}
-  #galeria .g figcaption{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.2em;margin-top:12px;opacity:.75}
-  #galeria .g figcaption a{text-decoration:underline;text-underline-offset:3px}
-
-  /* ============ CONTACTO (CTA) ============ */
-  #contacto{padding:0;min-height:100vh;display:grid;place-items:center;position:relative;isolation:isolate;--tone:var(--light);--tone-bg:var(--dark);color:var(--light)}
-  #contacto .bg{position:absolute;inset:0;z-index:0}
-  #contacto .bg .duo{height:100%}
-  #contacto .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,15,23,.2),rgba(11,15,23,.6))}
-  #contacto .card{position:relative;z-index:2;width:min(92vw,460px);background:var(--light);color:var(--dark);--tone:var(--dark);--tone-bg:var(--light);padding:calc(var(--pad)*1.4) var(--pad);text-align:center;display:grid;gap:1.6em;margin:calc(var(--pad)*2.6) 0;top:auto;min-height:auto;grid-template-columns:1fr;border:0}
-  #contacto .card .d5{max-width:14ch;margin:0 auto}
-  #contacto .card .lines{display:grid;gap:.5em;font-size:clamp(11px,.95vw,13px);letter-spacing:.14em}
-  #contacto .card .lines a{text-decoration:underline;text-underline-offset:4px;text-decoration-color:color-mix(in srgb,currentColor 40%,transparent)}
 
   /* ============ FAQ ============ */
-  #faq .letters{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;justify-items:center;min-height:60vh;gap:var(--pad)}
+  #faq .letters{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;justify-items:center;min-height:50vh;gap:var(--pad)}
   #faq .letters .L{display:flex;align-items:flex-end;gap:14px}
   #faq .letters .L b{font-family:var(--serif);font-weight:400;font-size:clamp(70px,11vw,190px);line-height:.8;letter-spacing:-.05em}
   #faq .letters .L small{font-family:var(--mono);font-size:10px;letter-spacing:.2em;line-height:1.6;opacity:.7;padding-bottom:6px}
@@ -448,6 +353,16 @@
     #faq .letters{grid-template-columns:1fr;min-height:auto}
     #faq .a{padding-left:0}
   }
+
+  /* ============ CONTACTO (CTA) ============ */
+  #contacto{padding:0;min-height:100vh;display:grid;place-items:center;position:relative;isolation:isolate;--tone:var(--light);--tone-bg:var(--dark);color:var(--light)}
+  #contacto .bg{position:absolute;inset:0;z-index:0}
+  #contacto .bg .duo{height:100%}
+  #contacto .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,15,23,.2),rgba(11,15,23,.6))}
+  #contacto .card{position:relative;z-index:2;width:min(92vw,460px);background:var(--light);color:var(--dark);--tone:var(--dark);--tone-bg:var(--light);padding:calc(var(--pad)*1.4) var(--pad);text-align:center;display:grid;gap:1.6em;margin:calc(var(--pad)*2.6) 0;top:auto;min-height:auto;grid-template-columns:1fr;border:0}
+  #contacto .card .d5{max-width:14ch;margin:0 auto}
+  #contacto .card .lines{display:grid;gap:.5em;font-size:clamp(11px,.95vw,13px);letter-spacing:.14em}
+  #contacto .card .lines a{text-decoration:underline;text-underline-offset:4px;text-decoration-color:color-mix(in srgb,currentColor 40%,transparent)}
 
   /* ============ FOOTER ============ */
   footer{position:relative;overflow:hidden;min-height:100vh;display:grid;grid-template-rows:auto 1fr auto;padding:calc(var(--navh) + var(--pad)) var(--pad) var(--pad);gap:var(--pad)}
@@ -534,15 +449,13 @@
 
 <div id="menu" aria-hidden="true">
   <ul class="d4">
-    <li style="--i:0"><a href="#nosotros">Quiénes somos</a></li>
-    <li style="--i:1"><a href="#base">Desde Neuquén</a></li>
-    <li style="--i:2"><a href="#servicios">Servicios</a></li>
+    <li style="--i:0"><a href="#casos">Casos</a></li>
+    <li style="--i:1"><a href="#servicios">Servicios</a></li>
+    <li style="--i:2"><a href="#clientes">Con quién trabajamos</a></li>
     <li style="--i:3"><a href="#proceso">Cómo trabajamos</a></li>
-    <li style="--i:4"><a href="#casos">Casos</a></li>
-    <li style="--i:5"><a href="#condiciones">Condiciones</a></li>
-    <li style="--i:6"><a href="#integraciones">Integraciones</a></li>
-    <li style="--i:7"><a href="#faq">Preguntas</a></li>
-    <li style="--i:8"><a href="#contacto">Contacto</a></li>
+    <li style="--i:4"><a href="#nosotros">Nosotros</a></li>
+    <li style="--i:5"><a href="#faq">Preguntas</a></li>
+    <li style="--i:6"><a href="#contacto">Contacto</a></li>
   </ul>
   <div class="foot t6">
     <div><small>WhatsApp</small><a href="https://wa.me/5492994156149" target="_blank" rel="noopener">+54 9 299 415-6149</a></div>
@@ -565,208 +478,20 @@
       <div class="veil"></div>
       <div class="bars"></div>
     </div>
-    <div class="prologue-hint">SISTEMAS QUE FUNCIONAN<br>NEUQUÉN, ARGENTINA</div>
+    <div class="hint l">SISTEMAS QUE FUNCIONAN<br>NEUQUÉN, ARGENTINA</div>
     <div class="fg">
-      <span class="eyebrow">Estudio de desarrollo de software</span>
-      <h1 class="d1 word striped" id="hero-word">VECTORIA</h1>
-      <div class="cols">
-        <div><span class="dim">Desarrollo</span><br><svg class="mark" viewBox="0 0 150 60" aria-hidden="true"><g transform="translate(14,0) skewX(-14)"><polygon fill="currentColor" points="0,0 15,0 27,42 39,0 54,0 34,60 20,60"/><polygon fill="var(--ac)" points="59,14 69,14 69,50 59,50"/><circle fill="var(--ac)" cx="64" cy="54" r="6.5"/><polygon fill="var(--ac)" points="64,0 74,16 54,16"/><path fill="currentColor" fill-rule="evenodd" d="M74,60 L96,0 L110,0 L132,60 L118,60 L114,48 L92,48 L88,60 Z M97,37 L109,37 L103,17 Z"/></g></svg>Sin intermediarios</div>
-        <div>Software a medida<br>Seguridad · Infraestructura · Web</div>
-        <div>Neuquén,<br>Argentina</div>
-      </div>
+      <span class="eyebrow">Estudio de desarrollo de software · Neuquén</span>
+      <h1 class="d2">Software a medida para empresas de la Patagonia</h1>
+      <p>Un sistema que funciona no se nota. Se nota cuando falta: un turno que se pierde, una planilla que se rompe, un acceso que nadie sabe quién tiene. Construimos lo que después nadie tiene que pensar.</p>
+      <a class="btn wa" href="https://wa.me/5492994156149?text=Hola%2C%20quiero%20consultar%20por%20un%20proyecto" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg>Hablemos por WhatsApp</a>
     </div>
     <div class="scroll"><i></i>Scroll</div>
-    <a class="circle cta" href="https://wa.me/5492994156149?text=Hola%2C%20quiero%20consultar%20por%20un%20proyecto" target="_blank" rel="noopener">Hablemos por WhatsApp</a>
-  </div>
-</section>
-
-<!-- ================= PRÓLOGO ================= -->
-<section class="section on-dark" id="prologo" data-theme="dark">
-  <div class="wrap">
-    <span class="eyebrow">Prólogo</span>
-    <p class="quote d5" id="quote">“Un sistema que funciona no se nota. Se nota cuando falta: un turno que se pierde, una planilla que se rompe, un acceso que nadie sabe quién tiene. Construimos lo que después nadie tiene que pensar.”</p>
-    <a class="btn fill" href="#proceso">Ver cómo trabajamos</a>
-  </div>
-</section>
-
-<!-- ================= NOSOTROS ================= -->
-<section class="section on-light" id="nosotros" data-theme="light">
-  <div class="grid">
-    <div class="brand rv">
-      <div class="d1">VectorIA<br>Neuquén</div>
-      <div class="by t5"><svg viewBox="0 0 150 60" aria-hidden="true"><g transform="translate(14,0) skewX(-14)"><polygon fill="currentColor" points="0,0 15,0 27,42 39,0 54,0 34,60 20,60"/><polygon fill="var(--ac)" points="59,14 69,14 69,50 59,50"/><circle fill="var(--ac)" cx="64" cy="54" r="6.5"/><polygon fill="var(--ac)" points="64,0 74,16 54,16"/><path fill="currentColor" fill-rule="evenodd" d="M74,60 L96,0 L110,0 L132,60 L118,60 L114,48 L92,48 L88,60 Z M97,37 L109,37 L103,17 Z"/></g></svg>Neuquén, Argentina</div>
-    </div>
-  </div>
-  <div class="grid" style="margin-top:calc(var(--pad)*2)">
-    <div class="block col-4 off-1 rv">
-      <h3 class="d4">Quiénes somos</h3>
-      <div class="rule"></div>
-      <p class="t5">VectorIA es un estudio de desarrollo de software con base en Neuquén. Diseñamos, construimos y mantenemos sistemas para empresas que necesitan que las cosas funcionen: aplicaciones a medida, seguridad de cuentas y servidores, infraestructura cloud administrada por nosotros y sitios web. Sin intermediarios: quien te atiende es quien desarrolla.</p>
-      <p style="margin-top:2em"><button class="btn fill" data-open="consulta">Consulta</button></p>
-    </div>
-    <div class="block col-5 off-6 rv" data-delay="1" style="padding-top:22%">
-      <h3 class="d4">Cómo pensamos</h3>
-      <div class="rule"></div>
-      <p class="t5">Cada proyecto arranca por el problema, no por la herramienta. Relevamos cómo trabaja tu empresa, escribimos una propuesta con alcance, plazos y precio cerrado, y desarrollamos por etapas que se prueban con datos reales. Si algo se resuelve con una herramienta que ya existe, lo decimos. Usamos IA como herramienta donde suma; lo que vendemos son sistemas que funcionan.</p>
-      <p class="t4" style="margin-top:2.4em;max-width:30ch">Sin plataformas mágicas ni piloto automático: ingeniería concreta para problemas concretos.</p>
-      <figure class="video">
-        <div class="duo frame">
-          <video muted playsinline loop preload="none" poster="assets/img/still-2.jpg" src="assets/video/hero2.mp4"></video>
-        </div>
-        <button class="play" aria-label="Reproducir"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 1l9 5-9 5z"/></svg></button>
-        <figcaption>En producción, no en una demo</figcaption>
-      </figure>
-    </div>
-  </div>
-  <div class="bleed duo stripes rv"><img src="assets/img/still-4.jpg" alt="" loading="lazy"></div>
-</section>
-
-<!-- ================= BASE ================= -->
-<section class="section on-dark" id="base" data-theme="dark">
-  <div class="title d2">
-    <div class="l1 rv">Desde</div>
-    <div class="l2 rv" data-delay="1"><span class="small">Base en</span>Neuquén</div>
-    <div class="l3 rv" data-delay="2">Para todo<br>el país</div>
-  </div>
-  <div class="grid">
-    <div class="col-6 rv">
-      <div class="map" aria-label="Mapa esquemático: Neuquén como base, alcance a Río Negro, Bariloche, Córdoba y Buenos Aires">
-        <svg viewBox="0 0 600 560" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
-          <g opacity=".35">
-            <path d="M20 120 C 120 60, 260 100, 340 40 S 560 20, 590 90"/>
-            <path d="M0 200 C 90 160, 200 220, 300 170 S 480 120, 600 180"/>
-            <path d="M0 300 C 120 250, 210 330, 320 280 S 470 220, 600 290"/>
-            <path d="M0 400 C 80 360, 230 430, 330 380 S 500 330, 600 400"/>
-            <path d="M0 500 C 110 450, 220 540, 340 480 S 520 430, 600 520"/>
-            <path d="M120 0 C 160 120, 90 260, 150 380 S 120 500, 170 560"/>
-            <path d="M380 0 C 420 110, 330 230, 400 340 S 380 470, 430 560"/>
-          </g>
-          <g stroke-dasharray="3 5" opacity=".7">
-            <path d="M205 330 L 260 300"/>
-            <path d="M205 330 C 170 380, 150 420, 140 450"/>
-            <path d="M205 330 C 300 260, 380 190, 420 150"/>
-            <path d="M205 330 C 330 300, 430 260, 500 240"/>
-          </g>
-        </svg>
-        <div class="pin base" style="left:33%;top:57%">Neuquén<small>Base · presencial</small></div>
-        <div class="pin" style="left:44%;top:50%">Cipolletti · Río Negro</div>
-        <div class="pin" style="left:22%;top:80%">Bariloche</div>
-        <div class="pin" style="left:66%;top:24%">Córdoba</div>
-        <div class="pin" style="left:70%;top:41%">Buenos Aires</div>
-      </div>
-    </div>
-    <div class="col-5 off-7 copy rv" data-delay="1">
-      <p class="t4">Trabajamos desde Neuquén con empresas de la Patagonia y del resto del país. Reuniones presenciales en el Alto Valle; el resto, remoto, con la misma respuesta.</p>
-      <p style="margin-top:2em"><button class="btn fill" data-open="consulta">Consulta</button></p>
-    </div>
-  </div>
-
-  <div class="slider-wrap rv" data-slider>
-    <div class="infra-head line" style="border-bottom:1px solid"><span>Con quién trabajamos</span><span><span class="cur">01</span> / <span class="tot">04</span></span></div>
-    <div class="infra">
-      <div class="left">
-        <div class="t6"><span class="mono dim">Ubicación</span><br>Neuquén capital, Argentina<br>Patagonia y todo el país</div>
-        <div class="duo photo"><img src="assets/img/still-3.jpg" alt="" loading="lazy"></div>
-        <a class="circle" href="#contacto">Contanos tu caso</a>
-      </div>
-      <div class="right">
-        <div class="slides">
-          <div class="slide on"><div><div class="num"><div class="d2">01</div></div><h4 class="t3">Empresas de servicios y obra</h4><p class="t5">Alquiler de maquinaria, bombas, mantenimiento: gente en la calle, equipos y planillas que no cierran.</p></div></div>
-          <div class="slide"><div><div class="num"><div class="d2">02</div></div><h4 class="t3">Centros de atención con turnos</h4><p class="t5">Masajes, consultorios, comercios: turnos, ventas, vouchers y recordatorios que hoy dependen de una persona.</p></div></div>
-          <div class="slide"><div><div class="num"><div class="d2">03</div></div><h4 class="t3">Apps que ya están en producción</h4><p class="t5">Productos con usuarios reales que necesitan seguridad, orden y velocidad sin frenar la operación.</p></div></div>
-          <div class="slide"><div><div class="num"><div class="d2">04</div></div><h4 class="t3">Pymes con sistemas que no alcanzan</h4><p class="t5">Planillas, WhatsApp y papeles que funcionaron hasta que la empresa creció.</p></div></div>
-        </div>
-        <div class="ctrl"><span><span class="cur">01</span> — <span class="tot">04</span></span><div class="arrows"><button class="arrow prev" aria-label="Anterior"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 2L4 7l5 5"/></svg></button><button class="arrow next" aria-label="Siguiente"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 2l5 5-5 5"/></svg></button></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= SERVICIOS ================= -->
-<section class="section on-light" id="servicios" data-theme="light">
-  <div class="head">
-    <div>
-      <span class="eyebrow">Servicios</span>
-      <h2 class="d3 rv">Qué hacemos, y nada más que eso</h2>
-    </div>
-  </div>
-  <div class="stack">
-    <article class="card" style="--i:0">
-      <div class="txt">
-        <div class="n"><span>01 / 04</span><span>Software</span></div>
-        <h3 class="d4">Software y aplicaciones a medida</h3>
-        <p class="lead">Sistemas que se adaptan a cómo trabaja tu empresa, no al revés.</p>
-        <ul>
-          <li><b>01</b><span>Sistemas de gestión y paneles de administración.</span></li>
-          <li><b>02</b><span>Apps web y PWA para empleados y clientes.</span></li>
-          <li><b>03</b><span>Integraciones con WhatsApp, Mercado Pago, Google, Tango Gestión y ERPs.</span></li>
-          <li><b>04</b><span>Reportes automáticos por mail o WhatsApp.</span></li>
-        </ul>
-      </div>
-      <figure class="pic"><div class="duo" style="--rot:-1.2deg"><img src="assets/img/still-1.jpg" alt="" loading="lazy"></div><figcaption>Operación en campo · Neuquén</figcaption></figure>
-    </article>
-    <article class="card" style="--i:1">
-      <div class="txt">
-        <div class="n"><span>02 / 04</span><span>Seguridad</span></div>
-        <h3 class="d4">Seguridad informática</h3>
-        <p class="lead">Trabajo concreto sobre cuentas, accesos y servidores. Sin títulos rimbombantes.</p>
-        <ul>
-          <li><b>01</b><span>Auditoría de accesos, cuentas, permisos y dispositivos.</span></li>
-          <li><b>02</b><span>Hardening de servidores y aplicaciones en producción.</span></li>
-          <li><b>03</b><span>Dominios y correo: SPF, DKIM y DMARC.</span></li>
-          <li><b>04</b><span>Backups verificados y capacitación anti-phishing.</span></li>
-        </ul>
-      </div>
-      <figure class="pic"><div class="duo stripes" style="--rot:1deg"><img src="assets/img/still-5.jpg" alt="" loading="lazy"></div><figcaption>Cuentas, accesos y servidores</figcaption></figure>
-    </article>
-    <article class="card" style="--i:2">
-      <div class="txt">
-        <div class="n"><span>03 / 04</span><span>Infraestructura</span></div>
-        <h3 class="d4">Infraestructura, cloud y mantenimiento</h3>
-        <p class="lead">Que el sistema esté arriba, respaldado y actualizado, todos los días.</p>
-        <ul>
-          <li><b>01</b><span>Deploy, hosting y dominios.</span></li>
-          <li><b>02</b><span>Infraestructura cloud administrada por nosotros.</span></li>
-          <li><b>03</b><span>Monitoreo, backups y migraciones.</span></li>
-          <li><b>04</b><span>Mantenimiento mensual.</span></li>
-        </ul>
-      </div>
-      <figure class="pic"><div class="duo" style="--rot:-.8deg"><img src="assets/img/still-4.jpg" alt="" loading="lazy"></div><figcaption>Vista aérea · planta en operación</figcaption></figure>
-    </article>
-    <article class="card" style="--i:3">
-      <div class="txt">
-        <div class="n"><span>04 / 04</span><span>Web</span></div>
-        <h3 class="d4">Sitios web y presencia digital</h3>
-        <p class="lead">Un sitio que carga rápido, se encuentra y explica lo que hacés.</p>
-        <ul>
-          <li><b>01</b><span>Sitios institucionales.</span></li>
-          <li><b>02</b><span>Google Business Profile.</span></li>
-          <li><b>03</b><span>Rendimiento y SEO técnico.</span></li>
-          <li><b>04</b><span>Documentos comerciales en PDF: presupuestos e informes.</span></li>
-        </ul>
-      </div>
-      <figure class="pic"><div class="duo frame" style="--rot:.6deg"><img src="assets/img/site-maqpat.jpg" alt="Sitio de Máquinas Patagónicas" loading="lazy"></div><figcaption>maquinaspatagonicas.com.ar</figcaption></figure>
-    </article>
-  </div>
-</section>
-
-<!-- ================= PROCESO ================= -->
-<section class="on-light" id="proceso" data-theme="light">
-  <div class="bar d2"><span class="rv">Cómo</span><span class="rv" data-delay="1">Trabajamos</span></div>
-  <div class="stage rv">
-    <div class="duo stripes"><img src="assets/img/still-3.jpg" alt="" loading="lazy"></div>
-    <div class="ends"><span>01</span><span>04</span></div>
-    <div class="steps">
-      <div class="st"><b>01</b><h4>Relevamiento</h4><p>Entendemos la operación, los sistemas actuales y qué duele.</p></div>
-      <div class="st"><b>02</b><h4>Propuesta escrita</h4><p>Alcance, etapas, plazos y precio cerrado. Por escrito.</p></div>
-      <div class="st"><b>03</b><h4>Desarrollo por etapas</h4><p>Cada etapa se prueba con datos reales y se aprueba antes de seguir.</p></div>
-      <div class="st"><b>04</b><h4>Producción y soporte</h4><p>Deploy, capacitación, accesos a tu nombre y mantenimiento si lo querés.</p></div>
-    </div>
+    <div class="hint r">SOFTWARE A MEDIDA · SEGURIDAD<br>INFRAESTRUCTURA · SITIOS WEB</div>
   </div>
 </section>
 
 <!-- ================= CASOS ================= -->
-<section class="section on-light" id="casos" data-theme="light" style="border-top:1px solid color-mix(in srgb,currentColor 28%,transparent)">
+<section class="section on-light" id="casos" data-theme="light">
   <div class="rule-v"></div>
   <div class="grid">
     <div class="intro rv">
@@ -818,10 +543,10 @@
     </div>
 
     <div class="media rv" data-delay="1">
-      <div class="duo frame">
-        <img class="shot on" data-shot="maqpat" src="assets/img/site-maqpat.jpg" alt="Sitio de Máquinas Patagónicas" loading="lazy">
-        <img class="shot" data-shot="calma" src="assets/calma-natural.jpg" alt="Calma Natural" loading="lazy">
-        <img class="shot" data-shot="sumo" src="assets/img/site-sumo.jpg" alt="Sitio de Sumo App" loading="lazy">
+      <div class="shotbox" id="casos-media">
+        <video class="shot on" data-shot="maqpat" muted playsinline loop autoplay preload="metadata" poster="assets/video/casos-maqpat.jpg" src="assets/video/casos-maqpat.mp4" aria-label="Recorrido por el sitio y la app de Máquinas Patagónicas"></video>
+        <img class="shot logo" data-shot="calma" src="assets/calma-natural.jpg" alt="Calma Natural" loading="lazy">
+        <video class="shot" data-shot="sumo" muted playsinline loop preload="none" poster="assets/video/casos-sumo.jpg" src="assets/video/casos-sumo.mp4" aria-label="Recorrido por el sitio de Sumo App"></video>
         <img class="shot" data-shot="bertogna" src="assets/img/still-5.jpg" alt="" loading="lazy">
       </div>
       <div class="cap"><span id="casos-cap">maquinaspatagonicas.com.ar</span><span><span id="casos-cur">01</span> / 04</span></div>
@@ -829,60 +554,152 @@
   </div>
 </section>
 
-<!-- ================= CONDICIONES ================= -->
-<section class="section on-dark" id="condiciones" data-theme="dark" style="padding-top:0">
-  <div class="marquee d4" style="margin:0 calc(var(--pad)*-1)"><div class="in"><span>Condiciones</span><span>Condiciones</span><span>Condiciones</span><span>Condiciones</span><span>Condiciones</span><span>Condiciones</span><span>Condiciones</span><span>Condiciones</span></div></div>
-  <div class="kpis">
-    <div class="rv"><div class="k">Cómo se cotiza</div><div class="v d4">Presupuesto cerrado por proyecto</div></div>
-    <div class="rv" data-delay="1"><div class="k">Cómo se paga</div><div class="v d4">Con factura, por etapas aprobadas</div></div>
-    <div class="rv" data-delay="2"><div class="k">Planes y suscripciones</div><div class="v d4">Ninguno. Lo que se cotiza es lo que se paga</div></div>
-  </div>
-  <div class="grid" style="margin-top:calc(var(--pad)*2);align-items:center">
-    <div class="col-3 rv">
-      <h4 class="k">Antes de empezar</h4>
-      <ul class="facts">
-        <li><span>Relevamiento de la operación</span><b>01</b></li>
-        <li><span>Propuesta escrita: alcance, etapas, plazos y precio</span><b>02</b></li>
-        <li><span>Se arranca cuando está claro para los dos</span><b>03</b></li>
-      </ul>
+<!-- ================= SERVICIOS ================= -->
+<section class="section on-dark" id="servicios" data-theme="dark">
+  <div class="head">
+    <div>
+      <span class="eyebrow">Servicios</span>
+      <h2 class="d3 rv">Qué hacemos, y nada más que eso</h2>
     </div>
-    <div class="col-5 off-4 rv" data-delay="1"><div class="mid duo stripes"><img src="assets/img/still-5.jpg" alt="" loading="lazy"></div></div>
-    <div class="col-3 off-10 rv" data-delay="2">
-      <h4 class="k">Compromisos</h4>
-      <ol class="comp">
-        <li>El código y los accesos son del cliente.</li>
-        <li>Presupuesto cerrado por proyecto.</li>
-        <li>No prometemos lo que no depende de nosotros.</li>
-        <li>Si se resuelve con una herramienta existente, lo decimos.</li>
-        <li>Trabajamos con factura.</li>
-      </ol>
-      <p style="margin-top:2em"><button class="btn fill" data-open="consulta">Consulta</button></p>
+  </div>
+  <div class="stack">
+    <article class="card" style="--i:0">
+      <div class="txt">
+        <div class="n"><span>01 / 04</span><span>Software</span></div>
+        <h3 class="d4">Software y aplicaciones a medida</h3>
+        <p class="lead">Sistemas que se adaptan a cómo trabaja tu empresa, no al revés.</p>
+        <ul>
+          <li><b>01</b><span>Sistemas de gestión y paneles de administración.</span></li>
+          <li><b>02</b><span>Apps web y PWA para empleados y clientes.</span></li>
+          <li><b>03</b><span>Integraciones con WhatsApp, Mercado Pago, Google, Tango Gestión y ERPs.<small>Turnos, recordatorios y avisos que salen solos desde tu sistema. Cobros y conciliación sin cargar nada a mano. Los datos viajan solos entre el sistema viejo y el nuevo.</small></span></li>
+          <li><b>04</b><span>Reportes automáticos por mail o WhatsApp.<small>Lo que hoy armás en una planilla, llega solo cada mañana con los números que importan y nada más.</small></span></li>
+        </ul>
+      </div>
+      <figure class="pic"><div class="duo" style="--rot:-1.2deg"><img src="assets/img/still-1.jpg" alt="" loading="lazy"></div><figcaption>Operación en campo · Neuquén</figcaption></figure>
+    </article>
+    <article class="card" style="--i:1">
+      <div class="txt">
+        <div class="n"><span>02 / 04</span><span>Seguridad</span></div>
+        <h3 class="d4">Seguridad informática</h3>
+        <p class="lead">Trabajo concreto sobre cuentas, accesos y servidores. Sin títulos rimbombantes.</p>
+        <ul>
+          <li><b>01</b><span>Auditoría de accesos, cuentas, permisos y dispositivos.</span></li>
+          <li><b>02</b><span>Hardening de servidores y aplicaciones en producción.</span></li>
+          <li><b>03</b><span>Dominios y correo: SPF, DKIM y DMARC.</span></li>
+          <li><b>04</b><span>Backups verificados y capacitación anti-phishing.</span></li>
+        </ul>
+      </div>
+      <figure class="pic"><div class="duo stripes" style="--rot:1deg"><img src="assets/img/still-5.jpg" alt="" loading="lazy"></div><figcaption>Cuentas, accesos y servidores</figcaption></figure>
+    </article>
+    <article class="card" style="--i:2">
+      <div class="txt">
+        <div class="n"><span>03 / 04</span><span>Infraestructura</span></div>
+        <h3 class="d4">Infraestructura, cloud y mantenimiento</h3>
+        <p class="lead">Que el sistema esté arriba, respaldado y actualizado, todos los días.</p>
+        <ul>
+          <li><b>01</b><span>Deploy, hosting y dominios.</span></li>
+          <li><b>02</b><span>Infraestructura cloud administrada por nosotros.</span></li>
+          <li><b>03</b><span>Monitoreo, backups y migraciones.</span></li>
+          <li><b>04</b><span>Mantenimiento mensual.</span></li>
+        </ul>
+      </div>
+      <figure class="pic"><div class="duo" style="--rot:-.8deg"><img src="assets/img/still-4.jpg" alt="" loading="lazy"></div><figcaption>Vista aérea · planta en operación</figcaption></figure>
+    </article>
+    <article class="card" style="--i:3">
+      <div class="txt">
+        <div class="n"><span>04 / 04</span><span>Web</span></div>
+        <h3 class="d4">Sitios web y presencia digital</h3>
+        <p class="lead">Un sitio que carga rápido, se encuentra y explica lo que hacés.</p>
+        <ul>
+          <li><b>01</b><span>Sitios institucionales.</span></li>
+          <li><b>02</b><span>Google Business Profile.</span></li>
+          <li><b>03</b><span>Rendimiento y SEO técnico.</span></li>
+          <li><b>04</b><span>Documentos comerciales en PDF: presupuestos e informes.</span></li>
+        </ul>
+      </div>
+      <figure class="pic"><div class="duo frame" style="--rot:.6deg"><img src="assets/img/site-maqpat.jpg" alt="Sitio de Máquinas Patagónicas" loading="lazy"></div><figcaption>maquinaspatagonicas.com.ar</figcaption></figure>
+    </article>
+  </div>
+</section>
+
+<!-- ================= CON QUIÉN TRABAJAMOS ================= -->
+<section class="section on-light" id="clientes" data-theme="light">
+  <div class="center rv"><span class="eyebrow">Con quién trabajamos</span><h2 class="d3">Cuatro perfiles de empresa, un mismo problema de fondo</h2></div>
+  <div class="rv" data-slider style="margin-top:calc(var(--pad)*1.4)">
+    <div class="head"><span>Con quién trabajamos</span><span><span class="cur">01</span> / <span class="tot">04</span></span></div>
+    <div class="infra">
+      <div class="left">
+        <div class="t6"><span class="mono dim">Base</span><br>Neuquén capital, Argentina<br>Presencial en el Alto Valle, remoto en el resto del país</div>
+        <div class="duo photo"><img src="assets/img/still-3.jpg" alt="" loading="lazy"></div>
+        <a class="circle" href="#contacto">Contanos tu caso</a>
+      </div>
+      <div class="right">
+        <div class="slides">
+          <div class="slide on"><div><div class="num"><div class="d2">01</div></div><h4 class="t3">Empresas de servicios y obra</h4><p class="t5">Alquiler de maquinaria, bombas, mantenimiento: gente en la calle, equipos y planillas que no cierran.</p></div></div>
+          <div class="slide"><div><div class="num"><div class="d2">02</div></div><h4 class="t3">Centros de atención con turnos</h4><p class="t5">Masajes, consultorios, comercios: turnos, ventas, vouchers y recordatorios que hoy dependen de una persona.</p></div></div>
+          <div class="slide"><div><div class="num"><div class="d2">03</div></div><h4 class="t3">Apps que ya están en producción</h4><p class="t5">Productos con usuarios reales que necesitan seguridad, orden y velocidad sin frenar la operación.</p></div></div>
+          <div class="slide"><div><div class="num"><div class="d2">04</div></div><h4 class="t3">Pymes con sistemas que no alcanzan</h4><p class="t5">Planillas, WhatsApp y papeles que funcionaron hasta que la empresa creció.</p></div></div>
+        </div>
+        <div class="ctrl"><span><span class="cur">01</span> — <span class="tot">04</span></span><div class="arrows"><button class="arrow prev" aria-label="Anterior"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 2L4 7l5 5"/></svg></button><button class="arrow next" aria-label="Siguiente"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 2l5 5-5 5"/></svg></button></div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ================= INTEGRACIONES ================= -->
-<section class="section on-dark" id="integraciones" data-theme="dark" style="border-top:1px solid color-mix(in srgb,currentColor 28%,transparent)">
-  <div class="hint"><span class="dot"></span><span class="path"></span><span>Mantené y arrastrá</span><span class="path"></span><span class="dot" style="opacity:.4"></span></div>
-  <div class="drag" data-drag>
-    <div class="it"><div class="k"><span>Integraciones · 01</span><span>WhatsApp</span></div><h3 class="d4">Turnos, recordatorios y avisos que salen solos desde tu sistema.</h3><p class="t5">Un bot que toma turnos las 24 horas, confirma, recuerda y avisa a quien corresponde.</p></div>
-    <div class="it"><div class="k"><span>Integraciones · 02</span><span>Mercado Pago</span></div><h3 class="d4">Cobros, vouchers y conciliación sin cargar nada a mano.</h3><p class="t5">El pago entra, el sistema lo registra y el comprobante llega solo.</p></div>
-    <div class="it"><div class="k"><span>Integraciones · 03</span><span>Google</span></div><h3 class="d4">Calendarios, Business Profile y correo corporativo en orden.</h3><p class="t5">Agenda sincronizada, ficha de Google al día y correo con SPF, DKIM y DMARC.</p></div>
-    <div class="it"><div class="k"><span>Integraciones · 04</span><span>Tango Gestión · ERPs</span></div><h3 class="d4">Los datos viajan solos entre el sistema viejo y el nuevo.</h3><p class="t5">Sin doble carga: lo que se factura, se vende o se cobra queda en un solo lugar.</p></div>
-    <div class="it"><div class="k"><span>Integraciones · 05</span><span>Reportes</span></div><h3 class="d4">Lo que hoy armás en una planilla, llega solo cada mañana.</h3><p class="t5">Por mail o WhatsApp, con los números que importan y nada más.</p></div>
+<!-- ================= CÓMO TRABAJAMOS + CONDICIONES ================= -->
+<section class="on-dark" id="proceso" data-theme="dark">
+  <div class="bar d2"><span class="rv">Cómo</span><span class="rv" data-delay="1">Trabajamos</span></div>
+  <div class="stage rv">
+    <div class="duo stripes"><img src="assets/img/still-3.jpg" alt="" loading="lazy"></div>
+    <div class="ends"><span>01</span><span>04</span></div>
+    <div class="steps">
+      <div class="st"><b>01</b><h4>Relevamiento</h4><p>Entendemos la operación, los sistemas actuales y qué duele.</p></div>
+      <div class="st"><b>02</b><h4>Propuesta escrita</h4><p>Alcance, etapas, plazos y precio cerrado. Por escrito.</p></div>
+      <div class="st"><b>03</b><h4>Desarrollo por etapas</h4><p>Cada etapa se prueba con datos reales y se aprueba antes de seguir.</p></div>
+      <div class="st"><b>04</b><h4>Producción y soporte</h4><p>Deploy, capacitación, accesos a tu nombre y mantenimiento si lo querés.</p></div>
+    </div>
   </div>
-  <p style="margin-top:calc(var(--pad)*1.4)"><button class="btn fill" data-open="consulta">Consulta</button></p>
+  <div class="cond">
+    <div class="marquee d4" style="margin:0 calc(var(--pad)*-1)"><div class="in"><span>Condiciones</span><span>Condiciones</span><span>Condiciones</span><span>Condiciones</span><span>Condiciones</span><span>Condiciones</span><span>Condiciones</span><span>Condiciones</span></div></div>
+    <div class="kpis">
+      <div class="rv"><div class="k">Cómo se cotiza</div><div class="v d4">Presupuesto cerrado por proyecto</div></div>
+      <div class="rv" data-delay="1"><div class="k">Cómo se paga</div><div class="v d4">Con factura, por etapas aprobadas</div></div>
+      <div class="rv" data-delay="2"><div class="k">Planes y suscripciones</div><div class="v d4">Ninguno. Lo que se cotiza es lo que se paga</div></div>
+    </div>
+    <div class="grid" style="margin-top:calc(var(--pad)*2);align-items:center">
+      <div class="col-5 off-1 rv"><div class="mid duo stripes"><img src="assets/img/still-5.jpg" alt="" loading="lazy"></div></div>
+      <div class="col-5 off-7 rv" data-delay="1">
+        <h4 class="k">Compromisos</h4>
+        <ol class="comp">
+          <li>El código y los accesos son del cliente.</li>
+          <li>Presupuesto cerrado por proyecto.</li>
+          <li>No prometemos lo que no depende de nosotros.</li>
+          <li>Si se resuelve con una herramienta existente, lo decimos.</li>
+          <li>Trabajamos con factura.</li>
+        </ol>
+        <p style="margin-top:2em"><button class="btn fill" data-open="consulta">Consulta</button></p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ================= EQUIPO ================= -->
-<section class="section on-dark" id="equipo" data-theme="dark" style="border-top:1px solid color-mix(in srgb,currentColor 28%,transparent)">
+<!-- ================= NOSOTROS ================= -->
+<section class="section on-light" id="nosotros" data-theme="light">
   <div class="center"><span class="eyebrow">Nosotros</span></div>
-  <h2 class="d3 statement rv">Quien te atiende es quien desarrolla. Sin intermediarios, sin promesas que no dependen de nosotros.</h2>
+  <h2 class="d3 statement rv">Quien te atiende es quien desarrolla</h2>
   <div class="grid">
-    <div class="cardlogo rv">
-      <p class="t5">VectorIA es un estudio de desarrollo con base en Neuquén. Trabajamos con empresas de la Patagonia y del resto del país, con factura, y con el código y los accesos a nombre del cliente.</p>
-      <div class="dots">· · ·</div>
-      <div class="logo"><svg viewBox="0 0 150 60" aria-hidden="true"><g transform="translate(14,0) skewX(-14)"><polygon fill="currentColor" points="0,0 15,0 27,42 39,0 54,0 34,60 20,60"/><polygon fill="var(--ac)" points="59,14 69,14 69,50 59,50"/><circle fill="var(--ac)" cx="64" cy="54" r="6.5"/><polygon fill="var(--ac)" points="64,0 74,16 54,16"/><path fill="currentColor" fill-rule="evenodd" d="M74,60 L96,0 L110,0 L132,60 L118,60 L114,48 L92,48 L88,60 Z M97,37 L109,37 L103,17 Z"/></g></svg><span>VectorIA</span></div>
+    <div class="portrait rv">
+      <div class="ph">
+        <!-- Cuando esté la foto: <img src="assets/img/tobi.jpg" alt="Tobi, fundador de VectorIA"> en lugar del bloque .in -->
+        <div class="in"><svg viewBox="0 0 150 60" aria-hidden="true"><g transform="translate(14,0) skewX(-14)"><polygon fill="currentColor" points="0,0 15,0 27,42 39,0 54,0 34,60 20,60"/><polygon fill="var(--ac)" points="59,14 69,14 69,50 59,50"/><circle fill="var(--ac)" cx="64" cy="54" r="6.5"/><polygon fill="var(--ac)" points="64,0 74,16 54,16"/><path fill="currentColor" fill-rule="evenodd" d="M74,60 L96,0 L110,0 L132,60 L118,60 L114,48 L92,48 L88,60 Z M97,37 L109,37 L103,17 Z"/></g></svg><span>Foto · pendiente</span></div>
+      </div>
+      <div class="who"><div><b>Tobi</b>Fundador y desarrollador</div><div class="right">Neuquén,<br>Argentina</div></div>
+    </div>
+    <div class="copy rv" data-delay="1">
+      <p class="big">Sin intermediarios, sin promesas que no dependen de nosotros.</p>
+      <p class="t5">VectorIA es un estudio de desarrollo de software con base en Neuquén. Diseñamos, construimos y mantenemos sistemas para empresas que necesitan que las cosas funcionen: aplicaciones a medida, seguridad de cuentas y servidores, infraestructura cloud administrada por nosotros y sitios web.</p>
+      <p class="t5">Cada proyecto arranca por el problema, no por la herramienta. Relevamos cómo trabaja tu empresa, escribimos una propuesta con alcance, plazos y precio cerrado, y desarrollamos por etapas que se prueban con datos reales. Si algo se resuelve con una herramienta que ya existe, lo decimos. Usamos IA como herramienta donde suma; lo que vendemos son sistemas que funcionan.</p>
+      <p style="margin-top:2em"><button class="btn fill" data-open="consulta">Consulta</button></p>
     </div>
   </div>
   <div class="facts">
@@ -891,16 +708,23 @@
     <div class="f rv" data-delay="2"><b>NQN</b><p>Base en Neuquén, alcance en todo el país</p></div>
     <div class="f rv" data-delay="3"><b>100%</b><p>Código y accesos a nombre del cliente</p></div>
   </div>
-  <div class="bleed duo stripes rv"><img src="assets/img/still-1.jpg" alt="" loading="lazy"></div>
 </section>
 
-<!-- ================= GALERÍA ================= -->
-<section class="section on-light" id="galeria" data-theme="light">
-  <div class="bar d2"><span class="rv">Sitios</span><span class="rv" data-delay="1">Publicados</span></div>
-  <div class="drag" data-drag>
-    <figure class="g"><div class="duo"><img src="assets/img/site-maqpat.jpg" alt="Sitio de Máquinas Patagónicas" loading="lazy"></div><figcaption><span>Máquinas Patagónicas S.R.L.</span><a href="https://maquinaspatagonicas.com.ar" target="_blank" rel="noopener">maquinaspatagonicas.com.ar ↗</a></figcaption></figure>
-    <figure class="g"><div class="duo"><img src="assets/img/site-sumo.jpg" alt="Sitio de Sumo App" loading="lazy"></div><figcaption><span>Sumo App</span><a href="https://www.sumochangas.com/" target="_blank" rel="noopener">sumochangas.com ↗</a></figcaption></figure>
-    <figure class="g"><div class="duo"><img src="assets/img/site-vectoria.jpg" alt="Sitio de VectorIA" loading="lazy"></div><figcaption><span>VectorIA</span><a href="casos.html">Casos en detalle ↗</a></figcaption></figure>
+<!-- ================= FAQ ================= -->
+<section class="section on-dark" id="faq" data-theme="dark">
+  <div class="letters">
+    <div class="L rv"><b>F</b><small>Respuestas a<br>las preguntas clave</small></div>
+    <div class="L rv" data-delay="1"><b>A</b></div>
+    <div class="L rv" data-delay="2"><small>Lo que hace falta<br>saber antes</small><b>Q</b></div>
+  </div>
+  <div class="list rv">
+    <details><summary><b>01</b><span>¿De quién es el código?</span><i>+</i></summary><div class="a">Del cliente. El repositorio, los dominios, las cuentas y los accesos quedan a tu nombre desde el primer día.</div></details>
+    <details><summary><b>02</b><span>¿Qué pasa si ya tengo un sistema?</span><i>+</i></summary><div class="a">Lo relevamos. Si sirve, integramos; si conviene reemplazarlo, te lo decimos por escrito. Y si el problema se resuelve con una herramienta que ya existe, también te lo decimos.</div></details>
+    <details><summary><b>03</b><span>¿Hacen mantenimiento después de entregar?</span><i>+</i></summary><div class="a">Sí. El mantenimiento mensual es opcional e incluye monitoreo, backups, actualizaciones y soporte. Si preferís tomarlo vos, el sistema queda documentado para eso.</div></details>
+    <details><summary><b>04</b><span>¿Dónde se aloja el sistema?</span><i>+</i></summary><div class="a">En infraestructura cloud administrada por nosotros, con backups verificados. Si tu empresa ya tiene infraestructura propia, se puede desplegar ahí.</div></details>
+    <details><summary><b>05</b><span>¿Trabajan fuera de Neuquén?</span><i>+</i></summary><div class="a">Sí. Reuniones presenciales en Neuquén y el Alto Valle; para el resto del país trabajamos de forma remota con la misma respuesta.</div></details>
+    <details><summary><b>06</b><span>¿Cuánto tarda un proyecto?</span><i>+</i></summary><div class="a">Depende del alcance. La propuesta escrita incluye plazos por etapa, y cada etapa se prueba y se aprueba antes de seguir con la siguiente.</div></details>
+    <details><summary><b>07</b><span>¿Por dónde empiezo?</span><i>+</i></summary><div class="a">Con una consulta. Contanos el problema por WhatsApp o por mail y coordinamos el relevamiento.</div></details>
   </div>
 </section>
 
@@ -916,25 +740,6 @@
       <a href="https://wa.me/5492994156149" target="_blank" rel="noopener">+54 9 299 415-6149</a>
       <a href="mailto:ventas.vectoria@gmail.com" style="text-transform:none">ventas.vectoria@gmail.com</a>
     </div>
-  </div>
-</section>
-
-<!-- ================= FAQ ================= -->
-<section class="section on-dark" id="faq" data-theme="dark">
-  <div class="letters">
-    <div class="L rv"><b>F</b><small>Respuestas a<br>las preguntas clave</small></div>
-    <div class="L rv" data-delay="1"><b>A</b></div>
-    <div class="L rv" data-delay="2"><small>Lo que hace falta<br>saber antes</small><b>Q</b></div>
-  </div>
-  <div class="list rv">
-    <details><summary><b>01</b><span>¿Cómo se cobra?</span><i>+</i></summary><div class="a">Presupuesto cerrado por proyecto, por escrito y por etapas. Trabajamos con factura. No hay planes ni suscripciones: lo que se cotiza es lo que se paga.</div></details>
-    <details><summary><b>02</b><span>¿De quién es el código?</span><i>+</i></summary><div class="a">Del cliente. El repositorio, los dominios, las cuentas y los accesos quedan a tu nombre desde el primer día.</div></details>
-    <details><summary><b>03</b><span>¿Qué pasa si ya tengo un sistema?</span><i>+</i></summary><div class="a">Lo relevamos. Si sirve, integramos; si conviene reemplazarlo, te lo decimos por escrito. Y si el problema se resuelve con una herramienta que ya existe, también te lo decimos.</div></details>
-    <details><summary><b>04</b><span>¿Hacen mantenimiento después de entregar?</span><i>+</i></summary><div class="a">Sí. El mantenimiento mensual es opcional e incluye monitoreo, backups, actualizaciones y soporte. Si preferís tomarlo vos, el sistema queda documentado para eso.</div></details>
-    <details><summary><b>05</b><span>¿Dónde se aloja el sistema?</span><i>+</i></summary><div class="a">En infraestructura cloud administrada por nosotros, con backups verificados. Si tu empresa ya tiene infraestructura propia, se puede desplegar ahí.</div></details>
-    <details><summary><b>06</b><span>¿Trabajan fuera de Neuquén?</span><i>+</i></summary><div class="a">Sí. Reuniones presenciales en Neuquén y el Alto Valle; para el resto del país trabajamos de forma remota con la misma respuesta.</div></details>
-    <details><summary><b>07</b><span>¿Cuánto tarda un proyecto?</span><i>+</i></summary><div class="a">Depende del alcance. La propuesta escrita incluye plazos por etapa, y cada etapa se prueba y se aprueba antes de seguir con la siguiente.</div></details>
-    <details><summary><b>08</b><span>¿Por dónde empiezo?</span><i>+</i></summary><div class="a">Con una consulta. Contanos el problema por WhatsApp o por mail y coordinamos el relevamiento.</div></details>
   </div>
 </section>
 
@@ -1040,11 +845,8 @@
 
   /* ---- Tema de la nav según la sección visible arriba ---- */
   const nav=$('nav.top');
-  const themed=$$('[data-theme]');
-  const themeIO=new IntersectionObserver(es=>{
-    es.forEach(e=>{ if(e.isIntersecting) nav.dataset.theme=e.target.dataset.theme; });
-  },{rootMargin:'0px 0px -92% 0px',threshold:0});
-  themed.forEach(s=>themeIO.observe(s));
+  const themeIO=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting) nav.dataset.theme=e.target.dataset.theme; }); },{rootMargin:'0px 0px -92% 0px',threshold:0});
+  $$('[data-theme]').forEach(s=>themeIO.observe(s));
 
   /* ---- Aparición al scroll ---- */
   const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }),{threshold:.12});
@@ -1062,25 +864,13 @@
       const kick=()=>{ const v=vids[i]; if(v&&v.isConnected&&v.paused){ const p=v.play(); if(p&&p.catch) p.catch(()=>{}); } };
       ['touchstart','scroll','click','keydown'].forEach(ev=>addEventListener(ev,kick,{passive:true,once:true}));
     }
-    const veil=$('.veil',hero), bars=$('.bars',hero), fg=$('.fg',hero), word=$('#hero-word');
+    const veil=$('.veil',hero), bars=$('.bars',hero), fg=$('.fg',hero);
     let raf=0;
     const update=()=>{ raf=0; const r=hero.getBoundingClientRect(); const range=r.height-innerHeight; const p=Math.min(1,Math.max(0,-r.top/(range||1)));
       veil.style.opacity=(p*.9).toFixed(3); bars.style.opacity=Math.min(1,p*1.6).toFixed(3);
       if(!reduce){ fg.style.transform=`translateY(${(-p*14).toFixed(2)}vh) scale(${(1-p*.08).toFixed(3)})`; fg.style.opacity=(1-Math.max(0,p-.55)/.45).toFixed(3); }
-      word.classList.toggle('solid',p>.35);
     };
     addEventListener('scroll',()=>{ if(!raf) raf=requestAnimationFrame(update); },{passive:true}); update();
-  })();
-
-  /* ---- Prólogo: palabra por palabra con el scroll ---- */
-  (function(){
-    const q=$('#quote'); if(!q) return;
-    const words=q.textContent.trim().split(/\s+/);
-    q.innerHTML=words.map(w=>`<span class="w">${w}</span>`).join(' ');
-    const ws=$$('.w',q); let raf=0;
-    const update=()=>{ raf=0; const r=q.getBoundingClientRect(); const p=Math.min(1,Math.max(0,(innerHeight*.85-r.top)/(r.height+innerHeight*.35))); const n=Math.round(p*ws.length); ws.forEach((w,i)=>w.classList.toggle('on',i<n)); };
-    addEventListener('scroll',()=>{ if(!raf) raf=requestAnimationFrame(update); },{passive:true}); update();
-    if(reduce) ws.forEach(w=>w.classList.add('on'));
   })();
 
   /* ---- Sliders (prev/next + contador) ---- */
@@ -1093,35 +883,18 @@
     go(0);
   });
 
-  /* ---- Arrastrar (integraciones, galería) ---- */
-  $$('[data-drag]').forEach(d=>{
-    let down=false,sx=0,sl=0,moved=false;
-    d.addEventListener('pointerdown',e=>{ down=true; moved=false; sx=e.clientX; sl=d.scrollLeft; d.setPointerCapture(e.pointerId); });
-    d.addEventListener('pointermove',e=>{ if(!down) return; const dx=e.clientX-sx; if(Math.abs(dx)>4){ moved=true; d.classList.add('dragging'); } d.scrollLeft=sl-dx; });
-    const up=()=>{ down=false; d.classList.remove('dragging'); };
-    d.addEventListener('pointerup',up); d.addEventListener('pointercancel',up);
-    d.addEventListener('click',e=>{ if(moved){ e.preventDefault(); moved=false; } },true);
-  });
-
-  /* ---- Casos: tabs ---- */
+  /* ---- Casos: tabs (imagen o video por cliente) ---- */
   (function(){
     const root=$('#casos-tabs'); if(!root) return;
     const caps={maqpat:'maquinaspatagonicas.com.ar',calma:'Calma Natural · panel y bot',sumo:'sumochangas.com',bertogna:'Bertogna Bombas y Servicios'};
     const btns=$$('[data-tab]',root);
-    btns.forEach((b,idx)=>b.addEventListener('click',()=>{
-      const k=b.dataset.tab;
-      btns.forEach(x=>x.classList.toggle('on',x===b));
+    const show=(k,idx)=>{
+      btns.forEach(x=>x.classList.toggle('on',x.dataset.tab===k));
       $$('.panel',root).forEach(p=>p.classList.toggle('on',p.dataset.panel===k));
-      $$('.shot',root).forEach(s=>s.classList.toggle('on',s.dataset.shot===k));
+      $$('.shot',root).forEach(s=>{ const on=s.dataset.shot===k; s.classList.toggle('on',on); if(s.tagName==='VIDEO'){ if(on){ s.preload='auto'; const p=s.play(); if(p&&p.catch) p.catch(()=>{}); } else s.pause(); } });
       $('#casos-cap').textContent=caps[k]; $('#casos-cur').textContent=String(idx+1).padStart(2,'0');
-    }));
-  })();
-
-  /* ---- Video de Nosotros ---- */
-  (function(){
-    const f=$('#nosotros .video'); if(!f) return; const v=$('video',f);
-    $('.play',f).addEventListener('click',()=>{ v.preload='auto'; const p=v.play(); if(p&&p.catch) p.catch(()=>{}); f.classList.add('playing'); });
-    v.addEventListener('click',()=>{ if(v.paused){ v.play(); f.classList.add('playing'); } else { v.pause(); f.classList.remove('playing'); } });
+    };
+    btns.forEach((b,idx)=>b.addEventListener('click',()=>show(b.dataset.tab,idx)));
   })();
 
   /* ---- Modal de consulta ---- */
