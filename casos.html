@@ -66,7 +66,8 @@
   .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:26px}
   .tag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:4px 9px;border:1px solid var(--line2);border-radius:6px;color:var(--muted)}
   .cols{display:grid;grid-template-columns:1fr 1.3fr;gap:20px}
-  @media(max-width:760px){.cols{grid-template-columns:1fr}}
+  .cols3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:760px){.cols,.cols3{grid-template-columns:1fr}}
   .box{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:24px}
   .box h4{font-family:var(--mono);font-weight:500;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ac);margin-bottom:12px}
   .box p{color:#C7CFDD;font-size:15px}
@@ -115,6 +116,9 @@
       <a href="#calma-natural">Calma Natural</a>
       <a href="#sumo">Sumo App</a>
       <a href="#bertogna">Bertogna Bombas</a>
+      <a href="#ceonatura">Ceonatura</a>
+      <a href="#lumina">Lumina Eventos</a>
+      <a href="#en-curso">Trabajo en curso</a>
     </div>
   </div>
 </section>
@@ -223,6 +227,80 @@
           <li><b>Presupuestos</b>Plantilla con cálculo automático de totales, datos de pago e identidad de la empresa, lista para imprimir o enviar en PDF.</li>
           <li><b>Informes técnicos</b>Formato unificado para documentar cada trabajo realizado.</li>
         </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CEONATURA -->
+<section class="case" id="ceonatura">
+  <div class="wrap">
+    <div class="head">
+      <div class="ini">CEO</div>
+      <div><h2>Ceonatura</h2><div class="sub">Seguridad e higiene laboral, salud ocupacional y medio ambiente · Neuquén</div></div>
+    </div>
+    <div class="tags"><span class="tag">Migración Workspace</span><span class="tag">Correo corporativo</span><span class="tag">Sitio web</span></div>
+    <div class="cols">
+      <div class="box">
+        <h4>El problema</h4>
+        <p>Una consultora con 14 casillas de correo en un proveedor caro y desactualizado, sin herramientas compartidas para el equipo, y con un sitio web que no representaba el nivel de la empresa.</p>
+      </div>
+      <div class="box">
+        <h4>Lo que se hizo</h4>
+        <ul>
+          <li><b>Migración a Google Workspace</b>14 casillas movidas con todo su historial, sin interrupción del servicio ni pérdida de mensajes. Dominio, registros de correo y seguridad configurados.</li>
+          <li><b>Herramientas de equipo</b>Drives compartidos, Meet y las funciones de IA de Workspace disponibles para todo el personal.</li>
+          <li><b>Sitio web institucional</b>Servicios, capacitación, galería y contacto, con la identidad de la empresa.</li>
+        </ul>
+        <div class="link"><a class="btn" href="https://ceonatura.com.ar" target="_blank" rel="noopener">Ver el sitio web ↗</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LUMINA -->
+<section class="case" id="lumina">
+  <div class="wrap">
+    <div class="head">
+      <div class="ini">LE</div>
+      <div><h2>Lumina Eventos</h2><div class="sub">Organización de eventos</div></div>
+    </div>
+    <div class="tags"><span class="tag">Sitio web</span><span class="tag">Landing</span></div>
+    <div class="cols">
+      <div class="box">
+        <h4>El problema</h4>
+        <p>Una empresa de eventos recién lanzada necesitaba presencia web desde el primer día: un lugar al que mandar a la gente desde Instagram y que convirtiera visitas en consultas.</p>
+      </div>
+      <div class="box">
+        <h4>Lo que se construyó</h4>
+        <ul>
+          <li><b>Sitio web</b>Servicios, galería, preguntas frecuentes y contacto directo por WhatsApp.</li>
+          <li><b>Rendimiento</b>Carga rápida en celular, que es desde donde llega casi todo el tráfico.</li>
+        </ul>
+        <div class="link"><a class="btn" href="https://luminaeventos.com.ar" target="_blank" rel="noopener">Ver el sitio web ↗</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EN CURSO -->
+<section class="case" id="en-curso">
+  <div class="wrap">
+    <div class="eyebrow">Trabajo en curso</div>
+    <h2 style="font-size:clamp(24px,3vw,32px);margin-bottom:10px">Lo que estamos construyendo ahora.</h2>
+    <p class="lead" style="margin-bottom:26px">Proyectos en desarrollo o en etapa de demo. Los nombres se publican cuando el cliente lo autoriza.</p>
+    <div class="cols cols3">
+      <div class="box">
+        <h4>Desarrolladora inmobiliaria · Neuquén</h4>
+        <p><b style="display:block;color:var(--text);margin-bottom:6px">Asistente de WhatsApp con IA y panel de ventas</b>Responde consultas sobre unidades, disponibilidad y financiación las 24 hs, deriva al vendedor cuando corresponde y registra cada contacto. Incluye sitio web y showroom virtual.</p>
+      </div>
+      <div class="box">
+        <h4>Desarrolladora · Patagonia</h4>
+        <p><b style="display:block;color:var(--text);margin-bottom:6px">Gestión de obra y rastreo satelital</b>PWA para partes diarios, personal, materiales y costos por obra con reporte a inversores, y módulo de rastreo satelital propio con lectura de datos del motor en cada equipo pesado.</p>
+      </div>
+      <div class="box">
+        <h4>Apart hotel · Rincón de los Sauces</h4>
+        <p><b style="display:block;color:var(--text);margin-bottom:6px">Sitio web con reservas por WhatsApp</b>Landing para huéspedes corporativos de la zona petrolera: habitaciones, servicios y consulta de disponibilidad desde el celular.</p>
       </div>
     </div>
   </div>
